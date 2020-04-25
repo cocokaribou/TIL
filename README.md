@@ -1,4 +1,4 @@
-# As a novice programmer Today I Learned... 
+# TIL
 
 * C
 * C++
