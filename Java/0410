@@ -1,4 +1,4 @@
-https://www.dreamincode.net/forums/topic/203631-constants-vs-literals/
+[Literal vs Constant](https://www.dreamincode.net/forums/topic/203631-constants-vs-literals/)
 
 A literal is a value that expressed as itself rather than as a variable's value or the result of an expression, such as number 3 or the string "hello".
 A constant is a meaningful name that takes the place of a literal and retains the same value throughout the program, as opposed to variable, whose value may change.
@@ -6,12 +6,12 @@ A constant is a meaningful name that takes the place of a literal and retains th
 so for example, an int literal is simply the number 2, a char literal is the char 'a'.
 while a named constant (I take it a constant declared by the programmer) is declared as:
 
-	final int intConstant = 2;
+'<final int intConstant = 2;>'
 
 
 (...)
 
-	int meh = 8;
+'<int meh = 8;>'
 
 The literal is 8, but the variable is meh. meh HOLDS the literal 8 until it is changed.
 
