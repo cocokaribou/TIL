@@ -1,7 +1,7 @@
 ## Literal vs Constant  
-https://www.dreamincode.net/forums/topic/203631-constants-vs-literals/      
-  
-A **literal** is a value that expressed as itself rather than as a variable's value or the result of an expression, such as number `3` or the string `"hello"`.  
+
+A **literal** is a value that expressed as itself rather than as a variable's value or the result of an expression,  
+such as number `3` or the string `"hello"`.  
 A **constant** is a meaningful name that takes the place of a literal and retains the same value throughout the program, as opposed to variable, whose value may change.
  
 
@@ -21,6 +21,9 @@ public static final int TheConstant = 131;
 ```
 
 Notice that the "static" and the "public" qualifiers are not required, but they are commonly seen in constants, so I included them.  
-However, to be a true constant, the "final" shall be there.      
-    
+However, to be a true constant, the "final" shall be there.  
+  
+  
 April.10.2020
+https://www.dreamincode.net/forums/topic/203631-constants-vs-literals/      
+  
