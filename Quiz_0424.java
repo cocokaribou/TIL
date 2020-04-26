@@ -1,4 +1,4 @@
-import java.util.*; //Random Å¬·¡½º
+import java.util.*;
 
 class Quiz_0424 
 {
