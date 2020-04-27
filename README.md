@@ -1,5 +1,7 @@
-# TIL
-
+# TIL  
+  
+As a novice programmer, Today I Learned...  
+  
 * C
 * C++
 * Java
