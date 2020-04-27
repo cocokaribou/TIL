@@ -97,7 +97,11 @@ class Quiz_0424
 		{
 			System.out.print("input number: (attempt no."+(i+1)+") :");
 			array[i] = sc.nextInt();
+
 			
+//tell if the input value is out of range.
+//continue statement so you can count the attempt and carry on.
+			if (array[i] > 50 || array[i] < 1){ System.out.println("Wrong input!"); continue;}
 			if (array[i] == rand){
 				System.out.println("correct!");
 				System.out.println("number of attempts: "+(i+1));
@@ -112,6 +116,9 @@ class Quiz_0424
 				System.out.println("Down");
 		}System.out.println("sorry, all trials are done!");
 		return;
+
+//if you don't want to print "Up" or "Down" before printing "every trials are done",
+//change for-loop to while-loop so you can tell if (input_try>count)
 
 	}
 }
