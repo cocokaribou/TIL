@@ -41,10 +41,10 @@ class LogicalOperator
 		int c = 0;
 
 		System.out.println(true || (c+=b) == a); //true
-		System.out.println(c); // 0, didn't process the second operator
+		System.out.println(c); // 0, didn't calculate the second operand
 
 		System.out.println(false && (c+=b) == a); //false
-		System.out.println(c); // 0, didn't process the second operator
+		System.out.println(c); // 0, didn't calculate the second operand
 
 // t || ...
 // f && ...
