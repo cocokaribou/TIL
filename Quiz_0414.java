@@ -20,7 +20,7 @@ class Quiz_0414
 		else
 			days = 30;
 
-		System.out.println(month+"êÅ = "+days+"ìí");
+		System.out.println(month+"æœˆ = "+days+"æ—¥");
 	}
 }
 	
