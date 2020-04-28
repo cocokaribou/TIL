@@ -6,16 +6,12 @@ import java.io.IOException;
 public class testingout_inputstream {
 	public static void main(String[] args) {
 		try{
-			File file = new File("C:\\Users\\Youngin Lee\\Desktop\\Klepto\\2020\\2. 2ºÐ±â\\ANSI.txt");
-			//ÆÄÀÏ °´Ã¼ »ý¼º
+			File file = new File("C:\\Users\\Youngin Lee\\Desktop\\Klepto\\2020\\2. 2ë¶„ê¸°\\ANSI.txt");
+			//create File Object
 			FileReader filereader = new FileReader(file);
 			int singleCh = 0;
 			while ((singleCh = filereader.read())!= -1){
 				System.out.print((char)singleCh);
-				if ((char)singleCh == 't')
-					System.out.print('Æ¼');
-				if ((char)singleCh == 'l')
-					System.out.print('¿¤');
 			}
 			System.out.print("\n\n\n");
 			filereader.close();
