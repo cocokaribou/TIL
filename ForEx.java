@@ -23,7 +23,7 @@ class ForEx
 			days = 30;
 
 
-		System.out.println("you've input "+month+"êÅ\n");
+		System.out.println("you've input "+month+"æœˆ\n");
 		for (int i = 1; i < days+1; i++){
 			System.out.print(i+"\t");
 			if (i % 7 == 0) //newline in every 7th days
