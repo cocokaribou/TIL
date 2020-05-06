@@ -14,6 +14,9 @@ class CardTest
 		c4.tellcard();
 		c5.tellcard();
 
-		
+		//class variables (static)
+		//doesn't need any class instances
+
+		System.out.println("The width of the card is "+Card.width+" and the height is "+Card.height);
 	}
 }
