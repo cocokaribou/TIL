@@ -1,12 +1,12 @@
-class	Calc_method
+class Calc_method
 {
 
-//class field
+/*----class field----*/
 
 	int num = 1;
 
 
-//class method()
+/*----class method()----*/
 
 
 /*How to define method

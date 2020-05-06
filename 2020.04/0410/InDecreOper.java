@@ -12,7 +12,7 @@ class InDecreOper
 		System.out.println("num1 = ++num1; //" + num1);
 
 		System.out.println();
-		System.out.println("when you operate in a print statement\n");
+		System.out.println("---when you operate in a print statement---\n");
 		
 		System.out.println("num1= " + num1);
 		

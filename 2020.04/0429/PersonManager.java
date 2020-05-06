@@ -1,10 +1,10 @@
 class PersonManager
 {
-/*---class variable---*/
+/*---class field---*/
 	Person[] arr = new Person[100];
 	int count = 0;
 
-	//initialize counter value in field instead of using for-loop in the method
+	//initialize counter value in the class field instead of using for-loop in the method
 
 /*---method--*/
 
@@ -19,18 +19,16 @@ class PersonManager
 	public void printInfo() {
 		if (count == 0)
 		{
-			System.out.println("no Member has been registered");
+			System.out.println("no Member has been registered yet");
 			return;
 		}
 		for(int i=0; i<count; ++i){
-			if ((arr[i])!= null) {
 				System.out.println(arr[i].name);
 				System.out.println(arr[i].age);
 				System.out.println(arr[i].gender);
 				System.out.println(arr[i].occupation);
 				System.out.println();
-				
 		}
 	}
 }
-}
+

@@ -1,8 +1,10 @@
-import java.util.Scanner;
+import java.util.Scanner;	
 class Quiz_0413
 {
 	public static void main(String[] args) 
 	{
+
+//BMI Calculator
 		Scanner scnr = new Scanner(System.in);
 		System.out.println("BMI Calculator");
 		

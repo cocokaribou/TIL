@@ -1,5 +1,5 @@
 import java.util.Scanner;
-/*---import java util pacakage in order to use Scanner(System.in) method in Scanner class---*/
+/*---import java util pacakage in order to use Scanner() method in Scanner class---*/
 
 class InputTest 
 {
@@ -17,6 +17,7 @@ class InputTest
 //read integer type input data from a user.
 //assign the input data into int variable 'num'.
 
+		System.out.print("input num = ");
 		int num = sc.nextInt();
 		System.out.println(num);
 
@@ -26,6 +27,7 @@ class InputTest
 //read String type input data from a user.
 //assign the input data into String variable 'tryout'.
 
+		System.out.print("input String = ");
 		String tryout = sc.next();
 		System.out.println(tryout);				
 
@@ -34,10 +36,9 @@ class InputTest
 //nextInt() reads integer type input data from a user.
 //assing the int data into double variable 'd'.
 
+		System.out.print("input num = ");
 		double d = sc.nextInt();
-		System.out.println(d);
-		//사용자로부터 입력받은 int형 정수가
-		//int 보다 수의 표현범위가 큰 double로 자동 형변환, double 형 변수 d에 대입된다
+		System.out.println("converted to double = "+d);
 
 	}
 }

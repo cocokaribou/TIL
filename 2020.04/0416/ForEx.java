@@ -32,8 +32,9 @@ class ForEx
 
 
 //how do I initialize Mon ~ Sun
+//how about using Calendar class methods
 
-		Calendar time = Calendar.getInstance();
-		System.out.println(time.getTime());
+//		Calendar time = Calendar.getInstance();
+//		System.out.println(time.getTime());
 	}
 }

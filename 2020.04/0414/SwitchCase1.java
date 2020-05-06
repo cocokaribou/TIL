@@ -4,9 +4,8 @@ class SwitchCase1
 {
 	public static void main(String[] args) 
 	{
-		boolean a1 =  1<3;
-		//¿Í ÀÌ°Ç..
-		int a2 = (a1)? 1 : 0;
+		boolean a1 =  1<3; //true
+		int a2 = (a1)? 1 : 0; //a2 = 1
 		switch (a2)
 		{
 		case 1 :
@@ -18,7 +17,7 @@ class SwitchCase1
 			System.out.printf("int val:%d\n",a2);
 			break;
 		default :
-			System.out.println("you choose the wrong one");
+			System.out.println("wrong input");
 			break;
 		}
 	}

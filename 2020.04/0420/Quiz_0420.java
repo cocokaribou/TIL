@@ -49,7 +49,8 @@ class Quiz_0420
 
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("printing the sum of numbers between 1~n1.\n");
+		System.out.println("printing the sum of numbers between 1~n1, except multiples of n2.");
+		System.out.println("n1 > n2");
 
 		System.out.print("input integer n1: ");
 		int num1 = scanner.nextInt();

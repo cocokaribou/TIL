@@ -26,13 +26,13 @@ class ANSI_TRYOUT
 		System.out.println(chr131);
 
 		char chr_hnn = '\u3042';
-		System.out.println(chr_hnn); //ã‚
+		System.out.println(chr_hnn); //ª¢
 
 		char chr_kyuu = '\uD024';
-		System.out.println(chr_kyuu); //í€¤
+		System.out.println(chr_kyuu); //³˜
 
 
 		//Unmappable character for encoding MS949 it says
-		//
+		//how to I solve this problem
 	}
 }

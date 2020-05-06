@@ -91,7 +91,7 @@ class ArrEx1
 		Scanner input = new Scanner(System.in);
 		int[] arr = new int[5];
 		
-		System.out.println("input test scores to calculate sum and average");
+		System.out.println("input 5 students' test scores to calculate sum and average");
 
 		int sum=0;
 		double average;

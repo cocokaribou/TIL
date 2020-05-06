@@ -9,7 +9,7 @@ class IfTest1
 		int num = scnr.nextInt();
 		if (num > 100 || num < 0)
 			System.out.println("\nerror! wrong input!");
-		else
+		else{
 			if (num >= 80)
 				System.out.println("\nA");
 			else if (num >= 70)
@@ -18,7 +18,7 @@ class IfTest1
 				System.out.println("\nC");
 			else
 				System.out.println("\nFail!");
-			
+		}	
 		System.out.print("end of the program\n\n");
 	}
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Main 
+class Quiz_0429 
 {
 	public static void main(String[] args) 
 	{
@@ -21,7 +21,7 @@ class Main
 			}
 			switch(select){
 				case 1:
-					System.out.println("You have chosen 1. register");
+					System.out.println("You have selected 1. register");
 					System.out.print("input name: ");
 					String name = input.next();
 					System.out.print("input age: ");
@@ -33,11 +33,11 @@ class Main
 					pm.insertPerson(name, age, gender, occupation);
 					break;
 				case 2:
-					System.out.println("You have chosen 2. print information");
+					System.out.println("You have selected 2. print information");
 					pm.printInfo();
 					break;
 				case 0:
-					System.out.println("You have chosen 0. exit program");
+					System.out.println("You have selected 0. exit program");
 					return;
 
 
