@@ -33,6 +33,6 @@ class ANSI_TRYOUT
 
 
 		//Unmappable character for encoding MS949 it says
-		//how to I solve this problem
+		//how do I solve this problem
 	}
 }
