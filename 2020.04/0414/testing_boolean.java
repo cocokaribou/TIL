@@ -6,6 +6,7 @@ class testing_boolean
 	{
 		Scanner sc = new Scanner(System.in);
 		String s1 = sc.nextLine();
+		sc.close();
 
 		Boolean bl = new Boolean(s1);
 
