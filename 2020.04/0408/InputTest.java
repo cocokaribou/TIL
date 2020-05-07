@@ -40,5 +40,7 @@ class InputTest
 		double d = sc.nextInt();
 		System.out.println("converted to double = "+d);
 
+		sc.close();
+
 	}
 }
