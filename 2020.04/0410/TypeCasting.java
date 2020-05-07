@@ -5,7 +5,7 @@ class  TypeCasting
 		float flt = 999999999999999L;
 		System.out.println(flt); 
 			//9.9999999E14
-			//long ¡æ float auto
+			//long to float auto type conversion
 
 
 		//long lng = 3.14f;
