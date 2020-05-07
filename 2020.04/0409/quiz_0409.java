@@ -15,6 +15,8 @@ class Quiz_0409
 		String result = a%2==0 ? "even" : "odd";
 		System.out.println(result);
 
+		sc.close();
+
 
 //2.
 //read three test scores numbers from a user and print out the average.
