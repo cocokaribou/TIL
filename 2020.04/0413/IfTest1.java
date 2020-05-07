@@ -20,5 +20,6 @@ class IfTest1
 				System.out.println("\nFail!");
 		}	
 		System.out.print("end of the program\n\n");
+		scnr.close();
 	}
 }
