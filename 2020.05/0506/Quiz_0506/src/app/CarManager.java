@@ -10,26 +10,41 @@ public class CarManager {
         counter++;
     }
 
-    void infoQuery(String number){
+    boolean tellIfNull(){
+        if (counter==0) {
+            return false;}
+        else
+            return true;
+    }
+
+    void infoQuery(String number){      
         for (int i=0; i<counter; i++){
             if (array[i].contact_num.equals(number)){
-            System.out.println("NAME : "+array[i].car_owner);
-            System.out.println("CAR NUMBER : "+array[i].car_num);
-            System.out.println("CONTACT NUMBER : "+array[i].contact_num);
-            System.out.println("CAR LOCATION : "+array[i].car_location);
+                System.out.println();
+                System.out.println("[no. "+(i+1)+"]");
+                System.out.println("NAME : "+array[i].car_owner);
+                System.out.println("CAR NUMBER : "+array[i].car_num);
+                System.out.println("CONTACT NUMBER : "+array[i].contact_num);
+                System.out.println("CAR LOCATION : "+array[i].car_location);
             }
-            else
-                System.out.println("no matching car info");
+            else {
+                System.out.println();
+                System.out.println("no matching car info!");
+                System.out.println("please try again!");
+            }
                 
         }
     }
 
     void printInfo(){
-        if(counter==0){
-            System.out.println("no car info has been added yet!");
+        if(tellIfNull() == false){
+            System.out.println();
+            System.out.println("no car info has been registered yet!");
             return;
         }
         for (int i=0; i<counter; ++i){
+            System.out.println();
+            System.out.println("[no. "+(i+1)+"]");
             System.out.println("NAME : "+array[i].car_owner);
             System.out.println("CAR NUMBER : "+array[i].car_num);
             System.out.println("CONTACT NUMBER : "+array[i].contact_num);

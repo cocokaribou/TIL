@@ -13,5 +13,6 @@ class DoWhile
 			System.out.println(n+"\n");
 		}
 		while (n != 0);
+		sc.close();
 	}
 }

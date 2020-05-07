@@ -10,6 +10,7 @@ class ForEx
 		
 		Scanner scanner = new Scanner(System.in);
 		month = scanner.nextInt();
+		scanner.close();
 		
 		if (month < 0 || month > 12) {
 			System.out.println("Wrong Input: must be in between Jan to Dec.\n");

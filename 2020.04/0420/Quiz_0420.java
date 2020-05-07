@@ -58,6 +58,7 @@ class Quiz_0420
 		System.out.print("input integer n2: ");
 		int num2 = scanner.nextInt();
 
+		scanner.close();
 
 		if (num1<0 || num1<num2)
 		{	System.out.println("Wrong number!\n");

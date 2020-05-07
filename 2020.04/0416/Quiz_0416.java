@@ -51,6 +51,8 @@ class Quiz_0416
 		System.out.print("input n2: ");
 		int n2 = sc.nextInt();
 
+		sc.close();
+
 		int sum = 0;
 
 		if (n1>n2){

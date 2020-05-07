@@ -9,7 +9,7 @@ class WhileLoop
 //		{
 //			i++;
 //			if (i%2==0)
-//				System.out.println("Â¦¼ö "+i);
+//				System.out.println("Â¦ï¿½ï¿½ "+i);
 //		}
 
 
@@ -34,5 +34,6 @@ class WhileLoop
 			if (a==0) {System.out.println("break!");break;} //break condition
 			System.out.println(a);
 		}
+		sc.close();
 	}
 }

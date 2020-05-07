@@ -14,6 +14,7 @@ class Quiz_0421
 //		System.out.println("divisor calculator");
 //		System.out.print("input integer num: ");
 //		int num = sc.nextInt();
+//		sc.close();
 //
 //		for (int i=1; i<=num; i++)
 //		{
@@ -44,6 +45,8 @@ class Quiz_0421
 //		int num1 = sc.nextInt();
 //		System.out.print("input integer n2: ");
 //		int num2 = sc.nextInt();
+
+//		sc.close();
 //		
 //		int total = 0;
 //
@@ -108,6 +111,7 @@ class Quiz_0421
 		System.out.print("input won : ");
 		
 		int won = sc.nextInt();
+		sc.close();
 		
 		double dollar = won * 0.00082;
 		double yen = won * 0.08824;
@@ -163,7 +167,9 @@ class Quiz_0421
 //		int num1 = sc.nextInt();
 //		System.out.print("input num2 : ");
 //		int num2 = sc.nextInt();
-//
+//		
+//		sc.close();
+
 //		System.out.println("\n---before---");
 //		System.out.println("value of num1 : "+num1);
 //		System.out.println("value of num2 : "+num2+"\n");
@@ -185,6 +191,7 @@ class Quiz_0421
 //
 //		System.out.print("input your birthyear: ");
 //		int birth_year = sc.nextInt();
+//		sc.close();
 //
 //		String zodiac ="";
 //
@@ -252,6 +259,7 @@ class Quiz_0421
 //			if (num%3==0 && num!=0)
 //				triple_count++;
 //		}System.out.println("\nthe number of multiples of 3 : "+triple_count);
+//		sc.close();
 
 //while(true){
 //....if (num==0) break;
