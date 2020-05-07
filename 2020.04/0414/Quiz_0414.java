@@ -8,7 +8,8 @@ class Quiz_0414
 		System.out.print("input the month you want to know the number of days : ");
 		Scanner scnr = new Scanner(System.in);
 		int month = scnr.nextInt();
-
+		scnr.close();
+		
 		int days = 0;
 
 		if (month > 12 || month < 0)
@@ -21,6 +22,7 @@ class Quiz_0414
 			days = 30;
 
 		System.out.println(month+"月 = "+days+"日");
+	
 	}
 }
 	

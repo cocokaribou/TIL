@@ -25,5 +25,7 @@ class Quiz_0413
 			System.out.println("Obese");
 		else
 			System.out.println("Extreme obese");
+
+		scnr.close();
 	}
 }
