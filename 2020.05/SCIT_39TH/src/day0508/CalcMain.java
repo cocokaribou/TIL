@@ -3,24 +3,22 @@ package day0508;
 import java.util.*;
 
 public class CalcMain {
-
     public static void main(String[] args){
         Calc c = new Calc();
-        int n1 = 0, n2 = 0;
-
-        System.out.println("Calculator prog");
 
         while(true){
+
+            System.out.println("Calculator prog");
+
             c.printMenu();
             Scanner input = new Scanner(System.in);
             
             int select = input.nextInt();
+            if (select == 0) {System.out.println("Exit the prog"); input.close(); return;}
 
-            if ( select != 0){
-                c.printSelection(select);
-                n1 = input.nextInt();
-                n2 = input.nextInt();
-            }
+            int[] arr = c.calcInput();
+            int n1 = arr[0];
+            int n2 = arr[1];                
 
             switch(select){
                 case 1:
@@ -35,10 +33,6 @@ public class CalcMain {
                 case 4:
                     c.dividing(n1, n2);
                     break;
-                case 0:
-                    System.out.println("Exit the prog");
-                    input.close();
-                    return;
             }
         }
     }

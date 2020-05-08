@@ -1,7 +1,10 @@
 package day0508;
 
-public class Calc {
+import java.util.*;
 
+
+public class Calc {
+  
     public void sum (int num1, int num2){
         int i = num1 + num2;
         System.out.println(i);
@@ -18,6 +21,7 @@ public class Calc {
     }
 
     public void dividing (int num1, int num2){
+        if (num1 <=0 || num2 <= 0) {System.out.println("input value should be above 0"); return;}
         double i = num1 / num2;
         System.out.println((int)i);
     }
@@ -32,13 +36,14 @@ public class Calc {
         System.out.println("==================");
     }
 
-    public void printSelection(int num){
-        if (num==0) return;
-        else if (num==1) System.out.println("1. addition \ninput two integers");
-        else if (num==2) System.out.println("2. substraction \ninput two integers");
-        else if (num==3) System.out.println("3. multiplication \ninput two integers");
-        else if (num==4) System.out.println("4. division \ninput two integers");
-        else return;
+    public int[] calcInput(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("input n1: ");
+        int n1 = sc.nextInt();
+        System.out.print("input n2: ");
+        int n2 = sc.nextInt();
+        int[] arr = {n1, n2};
+        return arr;
     }
 
 
