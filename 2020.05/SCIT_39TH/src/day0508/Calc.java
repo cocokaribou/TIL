@@ -32,5 +32,14 @@ public class Calc {
         System.out.println("==================");
     }
 
+    public void printSelection(int num){
+        if (num==0) return;
+        else if (num==1) System.out.println("1. addition \ninput two integers");
+        else if (num==2) System.out.println("2. substraction \ninput two integers");
+        else if (num==3) System.out.println("3. multiplication \ninput two integers");
+        else if (num==4) System.out.println("4. division \ninput two integers");
+        else return;
+    }
+
 
 }
