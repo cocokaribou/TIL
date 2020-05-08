@@ -2,24 +2,24 @@ package day0508;
 
 public class Calc {
 
-    public int sum (int num1, int num2){
+    public void sum (int num1, int num2){
         int i = num1 + num2;
-        return i;
+        System.out.println(i);
     }
 
-    public int minus (int num1, int num2){
+    public void minus (int num1, int num2){
         int i = num1 - num2;
-        return i;
+        System.out.println(i);
     }
 
-    public int multiply (int num1, int num2){
+    public void multiply (int num1, int num2){
         int i = num1 * num2;
-        return i;
+        System.out.println(i);
     }
 
-    public int dividing (int num1, int num2){
+    public void dividing (int num1, int num2){
         double i = num1 / num2;
-        return (int)i;
+        System.out.println((int)i);
     }
 
     public void printMenu(){

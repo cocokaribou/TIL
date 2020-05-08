@@ -24,16 +24,16 @@ public class CalcMain {
 
             switch(select){
                 case 1:
-                    System.out.println(c.sum(n1, n2));
+                    c.sum(n1, n2);
                     break;
                 case 2:
-                    System.out.println(c.minus(n1, n2));
+                    c.minus(n1, n2);
                     break;
                 case 3:
-                    System.out.println(c.multiply(n1, n2));
+                    c.multiply(n1, n2);
                     break;
                 case 4:
-                    System.out.println(c.dividing(n1, n2));
+                    c.dividing(n1, n2);
                     break;
                 case 0:
                     System.out.println("Exit the prog");
