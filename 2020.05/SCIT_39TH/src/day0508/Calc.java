@@ -14,12 +14,12 @@ public class Calc {
         int i = num1 - num2;
         System.out.println(i);
     }
-
+    
     public void multiply (int num1, int num2){
         int i = num1 * num2;
         System.out.println(i);
     }
-
+    
     public void dividing (int num1, int num2){
         if (num1 <=0 || num2 <= 0) {System.out.println("input value should be above 0"); return;}
         double i = num1 / num2;
@@ -35,6 +35,11 @@ public class Calc {
         System.out.println("0. Exit");
         System.out.println("==================");
     }
+
+
+    //method returns only one value.
+    //in order to return two operands from one method
+    //return array that stores two operands.
 
     public int[] calcInput(){
         Scanner sc = new Scanner(System.in);

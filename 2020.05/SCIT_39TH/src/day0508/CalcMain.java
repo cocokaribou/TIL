@@ -16,10 +16,12 @@ public class CalcMain {
             int select = input.nextInt();
             if (select == 0) {System.out.println("Exit the prog"); input.close(); return;}
 
+
             int[] arr = c.calcInput();
             int n1 = arr[0];
-            int n2 = arr[1];                
+            int n2 = arr[1];       
 
+            
             switch(select){
                 case 1:
                     c.sum(n1, n2);
