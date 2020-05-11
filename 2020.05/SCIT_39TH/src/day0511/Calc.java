@@ -20,7 +20,7 @@ public class Calc {
 //method overload2
 //if parameter list is the same,
 //return type should be different
-    public double calcSum(double a, double b){ //calculating with doubles, less precise
+    public double calcAdd(double a, double b){ //calculating with doubles, less precise
         return a + b;
     }
 
