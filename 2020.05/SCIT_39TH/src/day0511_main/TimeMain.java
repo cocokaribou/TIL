@@ -26,7 +26,7 @@ public class TimeMain {
 
 //if you set the Time.second = 60;
 //it will print out error message you've written in the setter method
-//and then get 0 as a default value of the instance variable
+//and then get 0 value as a default value of the instance variable
 
 
 
