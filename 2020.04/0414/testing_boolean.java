@@ -12,12 +12,12 @@ class testing_boolean
 
 		System.out.println("\nString: "+s1+"\nBoolean: "+bl);
 		
-		//Boolean class constructor: Boolean(String s);
-		//String converted to the Boolean.
+//Boolean class constructor: Boolean(String s);
+//String converted to the Boolean.
 
-		//new Boolean("True") produces a Boolean object that represents true.
-		//new Boolean("False") produces a Boolean object that represents false.
-		//Every String object except "true" & "false" == false
+//new Boolean("True") produces a Boolean object that represents true.
+//new Boolean("False") produces a Boolean object that represents false.
+//Every String object except "true" & "false" == false
 
 
 	}
