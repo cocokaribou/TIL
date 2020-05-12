@@ -4,8 +4,7 @@ package day0511;
 //in a different pacakage
 public class Time {
     
-//code convention: declare instance variables private
-//it's called "Benefits of Encapsulation"
+//"Benefits of Encapsulation": declare instance variables private
 
     private int hour;
     private int minute;
@@ -29,15 +28,23 @@ public class Time {
     }
 
 //why not use constructor in the first place?: to set the condition.
+//also, while constructor can set the value of the variable only once when creating class instance,
+//you can call setter method anytime you want to change the value of the variable.
 
-public Time(int hour, int minute, int second){
+public Time(int hour, int minute, int second){ //method in the initializer block
     setHour(hour);
     setMinute(minute);
     setSecond(second);
 }
 
+public Time(){
+    setHour(hour);
+    setMinute(minute);
+    setSecond(second);
+};
+
 /*
-Setter method or constructors
+<Setter method or constructors>
 You should use the constructor approach, when you want to create a new instance of the object, 
 with the values already populated(a ready to use object with value populated). 
 This way you need not explicitly call the setter methods for each field in the object to populate them.
