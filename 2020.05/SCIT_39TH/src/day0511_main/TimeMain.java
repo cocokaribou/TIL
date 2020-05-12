@@ -8,7 +8,7 @@ public class TimeMain {
 
 
 //if instance variables were declared public: 
-//first you import the (if they are located in a different pacakge),
+//first you import the package(if they are located in a different pacakge),
 //then you can directly access them via class instance.
 //...which is not recommended for the sake of encapsulation.
 
