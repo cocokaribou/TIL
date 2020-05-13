@@ -10,7 +10,7 @@ Class `Object` is the root of the class hierarchy. Every class has `Object` as a
 
 <font size = 3> Constructor Summary</font></br>
 
-| Object() | 
+`Object()`
 
 <font size = 3>Method Summary</font></br>
 | protected Object | clone()Creates and returns a copy of this object.                                                                                                                                                                                                           
