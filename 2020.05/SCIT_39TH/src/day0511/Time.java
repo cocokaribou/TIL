@@ -61,7 +61,7 @@ https://stackoverflow.com/questions/19359548/setter-methods-or-constructors
     }
 
 // ..or
-//     public int getHour(int hour){
+//     public int getHour(){
 //         return this.hour;
 //     }
 
