@@ -1,7 +1,7 @@
 https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html
 
 java.lang</br>
-<font size =4> Class Object</font></br>
+<font size =5> Class Object</font></br>
 java.lang.Object
 ___
 
@@ -13,7 +13,7 @@ Class `Object` is the root of the class hierarchy. Every class has `Object` as a
 `Object()`
 
 <font size = 3>Method Summary</font></br>
-| protected Object | clone()Creates and returns a copy of this object.                                                                                                                                                                                                           
+| protected Object | clone()Creates and returns a copy of this object.                                                                                                                                                                                                              
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | boolean          | equals(Object obj)Indicates whether some other object is "equal to" this one.                                                                                                                                                                               
 | protected void   | finalize()Called by the garbage collector on an object when garbage collection determines that there are no more references to the object.                                                                                                                  
