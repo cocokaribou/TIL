@@ -36,17 +36,24 @@ public class WrapperEx {
 
         boolean b1 = bool.booleanValue();
 
-//parseInt()
+//parseInt(String s)
 //Integer class static method
+//parse the string arguments as a signed decimal integer.
+
         String str3 = "24595";
         String str4 = "12342";
     
         System.out.println((Integer.parseInt(str3)) + (Integer.parseInt(str4)));
 
 
-//parseDouble()
+//parseDouble(String s)
 //Double class static method
+//Returns a new double initialized to the value represented by the specified String, as performed by the valueOf method of class Double.
 
+        String str5 = "3.1415";
+        String str6 = "0.45";
+
+        System.out.println((Double.parseDouble(str5))+(Double.parseDouble(str6)));
     }
 
 }
