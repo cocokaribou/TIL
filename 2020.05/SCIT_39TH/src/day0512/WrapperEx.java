@@ -56,7 +56,7 @@ public class WrapperEx {
 //         System.out.println((Double.parseDouble(str5))+(Double.parseDouble(str6)));
 
 
-//how to parse a string to int and string
+//how to parse a string to int and char
 
         String str = "sdg213a sdfasf";
         char[] strToChar = str.toCharArray();
