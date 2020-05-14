@@ -83,19 +83,14 @@ public class WrapperEx {
         }
 
         System.out.println("original string: " + str);
-
-
+        
         System.out.print("numbers: ");
-        for(int i =0; i<intCount; i++){       
-                if(intArr[i] != 0)        
-                        System.out.print(intArr[i] + " ");
-        }
+        for(int i =0; i<intCount; i++)
+                System.out.print(intArr[i] + " ");
         
         System.out.print("characters: ");
-        for(int i=0; i<charCount; i++){
-                if(charArr[i] != '\u0000')
-                        System.out.print(charArr[i] + " ");
-        }
+        for(int i=0; i<charCount; i++)
+                System.out.print(charArr[i] + " ");
 
 
 
