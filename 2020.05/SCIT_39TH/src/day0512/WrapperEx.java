@@ -77,13 +77,13 @@ public class WrapperEx {
 
         for(int i = 0; i<strToChar.length; i++){
                 char index = strToChar[i];
-                if(index >= '1'&& index <= '9'){
+                if(index >= '0'&& index <= '9'){
                         intArr[intCount++] = Character.getNumericValue(index);
                 }
         }
 
         System.out.println("original string: " + str);
-        
+
         System.out.print("numbers: ");
         for(int i =0; i<intCount; i++)
                 System.out.print(intArr[i] + " ");
