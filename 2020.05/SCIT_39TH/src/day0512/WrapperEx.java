@@ -58,37 +58,44 @@ public class WrapperEx {
 
 //how to parse a string to int and char
 
-        String str = "sdg213a sdfasf";
+        String str = "sdg2 13as  df0asf";
         char[] strToChar = str.toCharArray();
+
+        int[] intArr = new int[strToChar.length];
+        char[] charArr = new char[strToChar.length];
+
+        int intCount = 0;
+        int charCount = 0;
 
 //parse & print
         
-        System.out.print("characters: ");
         for(int i =0; i<strToChar.length; i++){
                 char index = strToChar[i];
-                if(index >= 'a' && index <= 'z'){
-                        if(index != ' ')
-                                System.out.print(index);
-                }
-                if(index == ' ' || index == '\t' || index == '\n') {
-                        continue;
-                }
-        }System.out.println();
+                if(index >= 'a' && index <= 'z') 
+                        charArr[charCount++] = index;
+        }
 
-        System.out.print("numbers: ");
         for(int i = 0; i<strToChar.length; i++){
                 char index = strToChar[i];
-                if(index >= '0'&& index <= '9'){
-                        if(index != ' ')
-                                System.out.print(Character.getNumericValue(index));
+                if(index >= '1'&& index <= '9'){
+                        intArr[intCount++] = Character.getNumericValue(index);
                 }
-                if(index == ' ' || index == '\t' || index == '\n') {
-                        continue;
-                }
-        }System.out.println();
+        }
+
+        System.out.println("original string: " + str);
 
 
-//how can I improve this logic in a more compact way?
+        System.out.print("numbers: ");
+        for(int i =0; i<intCount; i++){       
+                if(intArr[i] != 0)        
+                        System.out.print(intArr[i] + " ");
+        }
+        
+        System.out.print("characters: ");
+        for(int i=0; i<charCount; i++){
+                if(charArr[i] != '\u0000')
+                        System.out.print(charArr[i] + " ");
+        }
 
 
 
