@@ -9,8 +9,13 @@ public class IpodTouch extends Ipod{
         super(modelName, storage); //refers to superclass constructor
     }
 
+//method override
+    public void musicPlayer(){
+        super.musicPlayer();
+        System.out.println("played in IpodTouch");
+    }
     public void touch(){
-        System.out.println("touch extension");
+        System.out.println("Touch extension");
     }
 
 }

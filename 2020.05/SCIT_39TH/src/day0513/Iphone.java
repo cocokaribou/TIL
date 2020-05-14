@@ -3,8 +3,10 @@ package day0513;
 //subclass
 public class Iphone extends IpodTouch{
 
+//field
     private String phoneNumber;
 
+//getter and setter method
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
@@ -12,7 +14,8 @@ public class Iphone extends IpodTouch{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
+
+//default constructor
     public Iphone(){}
 
 //constructor override
