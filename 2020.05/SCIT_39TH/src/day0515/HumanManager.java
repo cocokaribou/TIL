@@ -8,7 +8,7 @@ public class HumanManager {
     public void insertStudent(String name, int age, int stNum){
         for(int i=0; i<array.length; i++){
             Student st = new Student(name, age, stNum);
-            array[count++] = st;
+            array[count++] = st; //postfix operator: logic first, increment next
         }
     }
 

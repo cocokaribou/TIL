@@ -19,8 +19,7 @@ public class ExException {
         } catch(NumberFormatException e){ //NumberFormatException object 'e'
             System.out.println("NumberFormatException");
             e.printStackTrace();
-        }    
-//      catch{}
+        }
     System.out.println("exit program");
 
 //how to write exception handling code : check java source code

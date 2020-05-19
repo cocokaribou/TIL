@@ -16,6 +16,7 @@ public class Student extends Human{
         this.stNum = stNum;
     }
 
+    @Override //annotation: won't allow method overload
     public void showInfo(){
         super.showInfo();
         System.out.println("student number: "+this.stNum);
