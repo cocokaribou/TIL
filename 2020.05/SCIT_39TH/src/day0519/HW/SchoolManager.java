@@ -12,7 +12,7 @@ public class SchoolManager {
             flag = true;
         }
         else{
-            for(int i=0; i<count; i++){
+            for(int i=0; i<count;){
                 String input = h.getSn(); //입력받은 객체의 주민번호
                 String sn = arr[i].getSn(); //먼저 저장된 배열요소 속 객체의 주민번호
 
