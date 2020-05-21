@@ -53,6 +53,10 @@ public class SchoolUI {
 
         if(sm.insertHuman(s)) System.out.println("정상 등록 완료");
         else System.out.println("등록 오류 (이미 존재하는 주민번호 또는 학번)");
+
+        //Student object s is upcasted to Human h
+        //By upcasting, Student(subclass) field is also stored in Human(superclass) type array.
+
     }
 
     public void insertStaff(){
