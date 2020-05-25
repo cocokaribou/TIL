@@ -36,7 +36,7 @@ public class SchoolUI {
         sm.printAll();
     }
 
-    public void insertStudent(){
+    public boolean insertStudent(){
         System.out.println("=====================");
         System.out.println("||     학생 등록    ||");
         System.out.println("=====================");
@@ -51,15 +51,15 @@ public class SchoolUI {
 
         Student s = new Student(sn, name, age, ssn);
 
-        if(sm.insertHuman(s)) System.out.println("정상 등록 완료");
-        else System.out.println("등록 오류 (이미 존재하는 주민번호 또는 학번)");
+        return sm.insertHuman(s);
 
         //Student object s is upcasted to Human h
         //By upcasting, Student(subclass) field is also stored in Human(superclass) type array.
+        //these fields will appear later when the object is downcasted.
 
     }
 
-    public void insertStaff(){
+    public boolean insertStaff(){
         System.out.println("=====================");
         System.out.println("||     직원 등록    ||");
         System.out.println("=====================");
@@ -74,11 +74,10 @@ public class SchoolUI {
 
         Staff st = new Staff(sn, name, age, field);
 
-        if(sm.insertHuman(st)) System.out.println("정상 등록 완료");
-        else System.out.println("등록 오류 (이미 존재하는 주민번호)");
+        return sm.insertHuman(st);
     }
 
-    public void insertProfessor(){
+    public boolean insertProfessor(){
         System.out.println("=====================");
         System.out.println("||     교수 등록    ||");
         System.out.println("=====================");
@@ -93,8 +92,7 @@ public class SchoolUI {
 
         Professor p = new Professor(sn, name, age, major);
 
-        if(sm.insertHuman(p)) System.out.println("정상 등록 완료");
-        else System.out.println("등록 오류 (이미 존재하는 주민번호)");
+        return sm.insertHuman(p);
     }
 
     public void insertHuman(){
@@ -103,13 +101,16 @@ public class SchoolUI {
             int choice = input.nextInt();
             switch(choice){
                 case 1:
-                    insertStudent();
+                    if(insertStudent()) System.out.println("정상등록 완료");
+                    else System.out.println("등록 오류");
                     break;
                 case 2:
-                    insertStaff();
+                    if(insertStaff()) System.out.println("정상등록 완료");
+                    else System.out.println("등록 오류");
                     break;
                 case 3:
-                    insertProfessor();
+                    if(insertProfessor()) System.out.println("정상등록 완료");
+                    else System.out.println("등록 오류");
                     break;
                 case 0:
                     return;
@@ -117,6 +118,44 @@ public class SchoolUI {
                     System.out.println("잘못된 입력");
             }
         }
+    }
+
+    public boolean deleteHuman(){
+        System.out.println("=====================");
+        System.out.println("||     정보 삭제    ||");
+        System.out.println("=====================");
+        System.out.print("주민번호 입력: ");
+
+        String sn = input.next();
+
+        if(sm.findHuman(sn) == null) return false;
+
+        //if matching object is found
+        //call deleteHuman();
+        else{
+            Human h = sm.findHuman(sn);
+            return sm.deleteHuman(h);
+        }
+    }
+
+    public Human findHuman(){
+        System.out.println("=====================");
+        System.out.println("||     정보 찾기    ||");
+        System.out.println("=====================");
+        System.out.print("주민번호 입력: ");
+        
+        String sn = input.next();
+        Human temp = sm.findHuman(sn);
+
+        System.out.println();
+        if(sm.findHuman(sn) != null){
+            int index = sm.returnIndex(temp);
+            System.out.print("no."+index+" ");
+        }
+        if(temp instanceof Student) System.out.println("학생");
+        if(temp instanceof Staff) System.out.println("스태프");
+        if(temp instanceof Professor) System.out.println("교수");
+        return sm.findHuman(sn);
     }
 
     public void exec(){
@@ -128,10 +167,17 @@ public class SchoolUI {
                     insertHuman();
                     break;
                 case 2:
-                    System.out.println("아직 준비중입니다");
+                    Human temp = findHuman();
+                    if(temp != null){
+                        temp.print();
+                    }else
+                        System.out.println("일치하는 정보 없음");
                     break;
                 case 3:
-                    System.out.println("아직 준비중입니다");
+                    if(deleteHuman()){
+                        System.out.println("삭제 성공");
+                    }else
+                        System.out.println("삭제 실패");
                     break;
                 case 4:
                     printAll();
