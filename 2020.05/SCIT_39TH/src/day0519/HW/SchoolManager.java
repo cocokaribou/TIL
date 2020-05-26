@@ -10,22 +10,18 @@ public class SchoolManager {
             arr[count++] = h;
             return true;
         }
-        if(h instanceof Student){
-            Student s = (Student)h;
-            for(int i=0; i<count; i++){
-                if (arr[i] instanceof Student) {
-                    Student s1 = (Student)arr[i];
-                    String input = s.getSsn(); //입력받은 객체의 학번
-                    String sn = s1.getSsn(); //먼저 저장된 배열요소 속 객체의 학번
-                    
-                    if(input.equals(sn)) return false;
-                }
+        for(int i =0; i<count; i++){
+            Human temp = arr[i];
+
+            if(h instanceof Student && temp instanceof Student){
+                Student s1 = (Student)h;
+                Student s2 = (Student)temp;
+    
+                if(s1.getSn().equals(s2.getSn())) return false;
             }
-        }
-        else{
-            for(int i=0; i<count; i++){
+            else{
                 String input = h.getSn(); //입력받은 객체의 주민번호
-                String sn = arr[i].getSn(); //먼저 저장된 배열요소 속 객체의 주민번호
+                String sn = temp.getSn(); //먼저 저장된 배열요소 속 객체의 주민번호
 
                 if(input.equals(sn)) return false;
             }

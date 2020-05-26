@@ -148,17 +148,21 @@ public class SchoolUI {
         Human temp = sm.findHuman(sn);
 
         System.out.println();
-        if(sm.findHuman(sn) != null){
+        if(temp != null){
             int index = sm.returnIndex(temp);
             System.out.print("no."+index+" ");
         }
         if(temp instanceof Student) System.out.println("학생");
         if(temp instanceof Staff) System.out.println("스태프");
         if(temp instanceof Professor) System.out.println("교수");
-        return sm.findHuman(sn);
+        return temp;
     }
 
     public void exec(){
+
+        Human h = null;
+        boolean result = false; //while문 안에 적지 않는다
+
         while(true){
             printMainMenu();
             int choice = input.nextInt();
@@ -168,12 +172,13 @@ public class SchoolUI {
                     insertHuman();
                     break;
                 case 2:
-                    Human temp = findHuman();
-                    if(temp != null) temp.print();
+                    h = findHuman();
+                    if(h != null) h.print();
                     else System.out.println("일치하는 정보 없음");
                     break;
                 case 3:
-                    if(deleteHuman()){
+                    result = deleteHuman();
+                    if(result){
                         System.out.println("삭제 성공");
                     }else
                         System.out.println("삭제 실패");
