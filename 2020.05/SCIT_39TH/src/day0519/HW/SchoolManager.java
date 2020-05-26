@@ -10,7 +10,7 @@ public class SchoolManager {
             arr[count++] = h;
             return true;
         }
-        else if(h instanceof Student){
+        if(h instanceof Student){
             Student s = (Student)h;
             for(int i=0; i<count; i++){
                 if (arr[i] instanceof Student) {
@@ -65,12 +65,14 @@ public class SchoolManager {
 
     public boolean deleteHuman(Human h){
         for(int i =0; i<count; i++){
-            if(arr[i] == h){
-                arr[i] = null;
-                for(int j = i; j<count; j++){
+            Human temp = arr[i];
+            if(temp == h){
+                //temp = null; 어차피 덮어씀
+                for(int j = i; j<count-1; j++){ //count-1 가장 마지막 index는 안 지워지고 살아있음
                     arr[j] = arr[j+1];
                 }
-                count--;
+                count--; //아아... 검색 범위 밖으로 놓는 것
+                arr[(arr.length)-1] = null;
                 return true;
             }
         }

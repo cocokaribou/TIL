@@ -102,15 +102,15 @@ public class SchoolUI {
             switch(choice){
                 case 1:
                     if(insertStudent()) System.out.println("정상등록 완료");
-                    else System.out.println("등록 오류");
+                    else System.out.println("등록 오류(이미 존재하는 주민번호 혹은 학번)");
                     break;
                 case 2:
                     if(insertStaff()) System.out.println("정상등록 완료");
-                    else System.out.println("등록 오류");
+                    else System.out.println("등록 오류(이미 존재하는 주민번호)");
                     break;
                 case 3:
                     if(insertProfessor()) System.out.println("정상등록 완료");
-                    else System.out.println("등록 오류");
+                    else System.out.println("등록 오류(이미 존재하는 주민번호)");
                     break;
                 case 0:
                     return;
@@ -162,16 +162,15 @@ public class SchoolUI {
         while(true){
             printMainMenu();
             int choice = input.nextInt();
+
             switch(choice){
                 case 1:
                     insertHuman();
                     break;
                 case 2:
                     Human temp = findHuman();
-                    if(temp != null){
-                        temp.print();
-                    }else
-                        System.out.println("일치하는 정보 없음");
+                    if(temp != null) temp.print();
+                    else System.out.println("일치하는 정보 없음");
                     break;
                 case 3:
                     if(deleteHuman()){
