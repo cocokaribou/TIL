@@ -1,23 +1,23 @@
 package day0526.HW;
 
+import java.util.ArrayList;
 
 public class SchoolManager {
-    private Human[] arr = new Human[100];
-    private int count = 0;
+    private ArrayList<Human> arr = new ArrayList<Human>();
 
     public boolean insertHuman(Human h){
-        if(count==0 && arr[count] == null){
-            arr[count++] = h;
+        if(arr.size() == 0){
+            arr.add(h);
             return true;
         }
-        for(int i =0; i<count; i++){
-            Human temp = arr[i];
+        for(int i =0; i<arr.size(); i++){
+            Human temp = arr.get(i);
 
             if(h instanceof Student && temp instanceof Student){
                 Student s1 = (Student)h;
                 Student s2 = (Student)temp;
     
-                if(s1.getSn().equals(s2.getSn())) return false;
+                if(s1.getSsn().equals(s2.getSsn())) return false;
             }
             else{
                 String input = h.getSn(); //입력받은 객체의 주민번호
@@ -26,7 +26,7 @@ public class SchoolManager {
                 if(input.equals(sn)) return false;
             }
         }
-        arr[count++] = h;
+        arr.add(h);
         return true;
     }
 
@@ -36,16 +36,16 @@ public class SchoolManager {
 
     public int returnIndex(Human h){
         int index = 0;
-        for(int i=0; i<arr.length; i++){
-            if(h==arr[i])
+        for(int i=0; i<arr.size(); i++){
+            if(h==arr.get(i))
                 index = i+1;
 
         }return index;
     }
 
     public Human findHuman(String input){
-        for(int i =0; i<count; i++){
-            Human human = arr[i];
+        for(int i =0; i<arr.size(); i++){
+            Human human = arr.get(i);
             String sn = human.getSn();
             
             if(input.equals(sn)){
@@ -60,15 +60,10 @@ public class SchoolManager {
     //field의 Human 배열에 존재할 경우, 해당 객체를 삭제하고 field의 count 변수의 값을 1 감소시키고 true 반환
 
     public boolean deleteHuman(Human h){
-        for(int i =0; i<count; i++){
-            Human temp = arr[i];
+        for(int i =0; i<arr.size(); i++){
+            Human temp = arr.get(i);
             if(temp == h){
-                //temp = null; 어차피 덮어씀
-                for(int j = i; j<count-1; j++){ //count-1 가장 마지막 index는 안 지워지고 살아있음
-                    arr[j] = arr[j+1];
-                }
-                count--; //아아... 검색 범위 밖으로 놓는 것
-                arr[(arr.length)-1] = null;
+                arr.remove(i);
                 return true;
             }
         }
@@ -77,17 +72,17 @@ public class SchoolManager {
 
     
     public void printAll(){
-        if(count == 0 && arr[0] == null){
+        if(arr.size() == 0){
             System.out.println("등록정보 없음");
             return;
         }
-        for (int i=0; i<count; i++){
+        for (int i=0; i<arr.size(); i++){
             System.out.print("no."+(i+1)+" ");
-            if(arr[i]instanceof Student) System.out.println("학생");
-            else if(arr[i]instanceof Staff) System.out.println("스태프");
-            else if(arr[i]instanceof Professor) System.out.println("교수");
+            if(arr.get(i) instanceof Student) System.out.println("학생");
+            else if(arr.get(i) instanceof Staff) System.out.println("스태프");
+            else if(arr.get(i) instanceof Professor) System.out.println("교수");
             
-            arr[i].print();
+            arr.get(i).print();
             System.out.println();
         }
     }

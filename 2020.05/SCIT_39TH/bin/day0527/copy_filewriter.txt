@@ -1,0 +1,9 @@
+read 2 byte binary unicode
+
+like english,
+
+한국어도,
+
+日本語も、
+
+中文也可以.

@@ -1,11 +1,11 @@
 package day0526.HW;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SchoolUI {
     SchoolManager sm = new SchoolManager();
     Scanner input = new Scanner(System.in);
-
 
     public void printMainMenu(){
         System.out.println("=====================");
@@ -37,21 +37,27 @@ public class SchoolUI {
     }
 
     public boolean insertStudent(){
-        System.out.println("=====================");
-        System.out.println("||     학생 등록    ||");
-        System.out.println("=====================");
-        System.out.print("이름 : ");
-        String name = input.next();
-        System.out.print("나이 : ");
-        int age = input.nextInt();
-        System.out.print("주민번호 : ");
-        String sn = input.next();
-        System.out.print("학번 : ");
-        String ssn = input.next();
+        try{
+            System.out.println("=====================");
+            System.out.println("||     학생 등록    ||");
+            System.out.println("=====================");
+            System.out.print("이름 : ");
+            String name = input.next();
+            System.out.print("나이 : ");
+            int age = input.nextInt();
+            System.out.print("주민번호 : ");
+            String sn = input.next();
+            System.out.print("학번 : ");
+            String ssn = input.next();
+    
+            Student s = new Student(sn, name, age, ssn);
+            return sm.insertHuman(s);
 
-        Student s = new Student(sn, name, age, ssn);
-
-        return sm.insertHuman(s);
+        }catch(InputMismatchException e){
+            input = new Scanner(System.in);
+            System.out.println("숫자를 입력해주세요");
+            return false;
+        }
 
         //Student object s is upcasted to Human h
         //By upcasting, Student(subclass) field is also stored in Human(superclass) type array.
@@ -60,65 +66,87 @@ public class SchoolUI {
     }
 
     public boolean insertStaff(){
-        System.out.println("=====================");
-        System.out.println("||     직원 등록    ||");
-        System.out.println("=====================");
-        System.out.print("이름 : ");
-        String name = input.next();
-        System.out.print("나이 : ");
-        int age = input.nextInt();
-        System.out.print("주민번호 : ");
-        String sn = input.next();
-        System.out.print("부서 : ");
-        String field = input.next();
+        try{
+            System.out.println("=====================");
+            System.out.println("||     직원 등록    ||");
+            System.out.println("=====================");
+            System.out.print("이름 : ");
+            String name = input.next();
+            System.out.print("나이 : ");
+            int age = input.nextInt();
+            System.out.print("주민번호 : ");
+            String sn = input.next();
+            System.out.print("부서 : ");
+            String field = input.next();
+    
+            Staff st = new Staff(sn, name, age, field);
+            return sm.insertHuman(st);
 
-        Staff st = new Staff(sn, name, age, field);
+        }catch(InputMismatchException e){
+            System.out.println("숫자를 입력해주세요");
+            return false;
+        }
 
-        return sm.insertHuman(st);
     }
 
     public boolean insertProfessor(){
-        System.out.println("=====================");
-        System.out.println("||     교수 등록    ||");
-        System.out.println("=====================");
-        System.out.print("이름 : ");
-        String name = input.next();
-        System.out.print("나이 : ");
-        int age = input.nextInt();
-        System.out.print("주민번호 : ");
-        String sn = input.next();
-        System.out.print("전공 : ");
-        String major = input.next();
+        try{
+            System.out.println("=====================");
+            System.out.println("||     교수 등록    ||");
+            System.out.println("=====================");
+            System.out.print("이름 : ");
+            String name = input.next();
+            System.out.print("나이 : ");
+            int age = input.nextInt();
+            System.out.print("주민번호 : ");
+            String sn = input.next();
+            System.out.print("전공 : ");
+            String major = input.next();
+    
+            Professor p = new Professor(sn, name, age, major);
+            return sm.insertHuman(p);
 
-        Professor p = new Professor(sn, name, age, major);
+        }catch(InputMismatchException e){
+            System.out.println("숫자를 입력해주세요");
+            return false;
+        }
 
-        return sm.insertHuman(p);
+
     }
 
     public void insertHuman(){
         while(true){
             printInsertHumanMenu();
-            int choice = input.nextInt();
-            switch(choice){
-                case 1:
-                    if(insertStudent()) System.out.println("정상등록 완료");
-                    else System.out.println("등록 오류(이미 존재하는 주민번호 혹은 학번)");
-                    break;
-                case 2:
-                    if(insertStaff()) System.out.println("정상등록 완료");
-                    else System.out.println("등록 오류(이미 존재하는 주민번호)");
-                    break;
-                case 3:
-                    if(insertProfessor()) System.out.println("정상등록 완료");
-                    else System.out.println("등록 오류(이미 존재하는 주민번호)");
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("잘못된 입력");
+            try{
+                input = new Scanner(System.in);
+                int choice = input.nextInt();
+                switch(choice){
+                    case 1:
+                        if(insertStudent()) System.out.println("정상등록 완료");
+                        else System.out.println("등록 오류");
+                        break;
+                    case 2:
+                        if(insertStaff()) System.out.println("정상등록 완료");
+                        else System.out.println("등록 오류");
+                        break;
+                    case 3:
+                        if(insertProfessor()) System.out.println("정상등록 완료");
+                        else System.out.println("등록 오류");
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        System.out.println("잘못된 입력");
+                        break;
+                }
+            }catch(InputMismatchException e){
+                System.out.println("숫자를 입력해주세요");
+                System.out.println();
+                input = new Scanner(System.in);
             }
         }
     }
+    
 
     public boolean deleteHuman(){
         System.out.println("=====================");
@@ -159,39 +187,46 @@ public class SchoolUI {
     }
 
     public void exec(){
-
         Human h = null;
-        boolean result = false; //while문 안에 적지 않는다
+        boolean result = false;
 
         while(true){
             printMainMenu();
-            int choice = input.nextInt();
-
-            switch(choice){
-                case 1:
-                    insertHuman();
-                    break;
-                case 2:
-                    h = findHuman();
-                    if(h != null) h.print();
-                    else System.out.println("일치하는 정보 없음");
-                    break;
-                case 3:
-                    result = deleteHuman();
-                    if(result){
-                        System.out.println("삭제 성공");
-                    }else
-                        System.out.println("삭제 실패");
-                    break;
-                case 4:
-                    printAll();
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("잘못된 입력");
-                    break;
+            try{
+                int choice = input.nextInt();
+                switch(choice){
+                    case 1:
+                        insertHuman();
+                        break;
+                    case 2:
+                        h = findHuman();
+                        if(h != null) h.print();
+                        else System.out.println("일치하는 정보 없음");
+                        break;
+                    case 3:
+                        result = deleteHuman();
+                        if(result){
+                            System.out.println("삭제 성공");
+                        }else
+                            System.out.println("삭제 실패");
+                        break;
+                    case 4:
+                        printAll();
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        System.out.println("잘못된 입력");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("숫자를 입력하세요!");
+                System.out.println();
+                
+                input = new Scanner(System.in);
             }
+
         }
     }
+
 }

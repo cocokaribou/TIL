@@ -23,9 +23,13 @@ public class CollectionEx2 {
 //returns V
 //if there's no matching key, returns null
 
-    System.out.println("Key: \"KIM\", Value: "+map1.get("KIM"));
-    System.out.println("Key: \"LEE\", Value: "+map1.get("LEE"));
-    System.out.println("Key: \"PARK\", Value: "+map1.get("PARK"));
+        System.out.println("Key: \"KIM\", Value: "+map1.get("KIM"));
+        System.out.println("Key: \"LEE\", Value: "+map1.get("LEE"));
+        System.out.println("Key: \"PARK\", Value: "+map1.get("PARK"));
+
+//remove(Object key)
+//returns V
+        map1.remove("LEE");
 
 //keySet()
 //returns Set<K>
