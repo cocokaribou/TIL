@@ -20,6 +20,8 @@ public class SchoolUI {
         System.out.print("메뉴선택 => ");
     }
 
+
+
     public void printInsertHumanMenu(){
         System.out.println("=====================");
         System.out.println("||     등록 메뉴    ||");
@@ -32,9 +34,13 @@ public class SchoolUI {
         System.out.print("메뉴선택 => ");
     }
 
+
+
     public void printAll(){
         sm.printAll();
     }
+
+
 
     public boolean insertStudent(){
         try{
@@ -65,6 +71,8 @@ public class SchoolUI {
 
     }
 
+
+
     public boolean insertStaff(){
         try{
             System.out.println("=====================");
@@ -88,6 +96,8 @@ public class SchoolUI {
         }
 
     }
+
+
 
     public boolean insertProfessor(){
         try{
@@ -114,12 +124,16 @@ public class SchoolUI {
 
     }
 
+
+
     public void insertHuman(){
+        int choice = 0;
+
         while(true){
             printInsertHumanMenu();
             try{
                 input = new Scanner(System.in);
-                int choice = input.nextInt();
+                choice = input.nextInt();
                 switch(choice){
                     case 1:
                         if(insertStudent()) System.out.println("정상등록 완료");
@@ -148,6 +162,7 @@ public class SchoolUI {
     }
     
 
+
     public boolean deleteHuman(){
         System.out.println("=====================");
         System.out.println("||     정보 삭제    ||");
@@ -165,6 +180,8 @@ public class SchoolUI {
             return sm.deleteHuman(h);
         }
     }
+
+
 
     public Human findHuman(){
         System.out.println("=====================");
@@ -186,6 +203,8 @@ public class SchoolUI {
         return temp;
     }
 
+
+
     public void exec(){
         Human h = null;
         boolean result = false;
@@ -193,7 +212,8 @@ public class SchoolUI {
         while(true){
             printMainMenu();
             try{
-                int choice = input.nextInt();
+                int choice = input.nextInt(); //문자가 입력돼서 예외
+                                                //Scanner 안에 아직 입력값(문자)이 남아있다
                 switch(choice){
                     case 1:
                         insertHuman();
@@ -223,7 +243,8 @@ public class SchoolUI {
                 System.out.println("숫자를 입력하세요!");
                 System.out.println();
                 
-                input = new Scanner(System.in);
+                //input = new Scanner(System.in); //다시 객체 생성하던가
+                input.next(); //혹은 next() 메서드를 선언해서 숫자 예외를 없애준다
             }
 
         }

@@ -3,6 +3,7 @@ package day0526;
 import java.util.HashMap;
 
 public class CollectionEx3 {
+
     public static void main(String[] args) {
 
 //how to store more than one value in a HashMap
@@ -22,9 +23,7 @@ public class CollectionEx3 {
 //returns reference type V
 //in this case, the V is Human class object
         Human result = map.get("22222");
-        System.out.println(result.getName());
-        System.out.println(result.getAge());
-
+        System.out.println(result.toString()); //overridden toString() print class field
 
     }
 }

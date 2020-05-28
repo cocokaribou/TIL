@@ -10,7 +10,7 @@ public class Stream5 {
         try{
             fis = new FileInputStream("C:\\Windows\\Java Quiz\\2020.05\\SCIT_39TH\\src\\day0527\\fileinputstream.txt"); //should be two of this \\
             fos = new FileOutputStream("C:\\Windows\\Java Quiz\\2020.05\\SCIT_39TH\\src\\day0527\\copy_filoutputstream.txt");
-            int data; //EOF
+            int data;
             while((data=fis.read())!= -1){
                 System.out.print((char)data);
                 fos.write(data);

@@ -7,8 +7,8 @@ public class Stream2 {
         FileReader fis = null;
         try{
             fis = new FileReader("C:\\Windows\\Java Quiz\\2020.05\\SCIT_39TH\\src\\day0527\\filereader.txt"); //should be two of this \\
-            int data; //EOF
-            while((data=fis.read())!= -1){
+            int data;
+            while((data=fis.read())!= -1){ //if FileInputStream reads EOF
                 System.out.print((char)data);
             }
 /*FileReader.read()

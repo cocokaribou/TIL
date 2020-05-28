@@ -7,12 +7,11 @@ public class Stream4 {
         FileInputStream fis = null;
         try{
             fis = new FileInputStream("C:\\Windows\\Java Quiz\\2020.05\\SCIT_39TH\\src\\day0527\\fileinputstream.txt"); //should be two of this \\
-            int data; //EOF
+            int data;
             while((data=fis.read())!= -1){
                 System.out.print((char)data);
             }
-//FileInputStream.read()
-/*
+/*FileInputStream.read()
 * Reads a byte of data from this input stream. This method blocks
 * if no input is yet available.
 */
