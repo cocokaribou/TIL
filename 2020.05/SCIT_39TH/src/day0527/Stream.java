@@ -11,8 +11,8 @@ public class Stream {
         }catch(IOException x){
             x.printStackTrace();
         }
-//InputStream.read();
-/* Reads some number of bytes from the input stream and stores them into
+/*InputStream.read();
+* Reads some number of bytes from the input stream and stores them into
 * the buffer array <code>b</code>. The number of bytes actually read is
 * returned as an integer.
 * This method blocks until input data is

@@ -15,8 +15,8 @@ public class Stream3 {
                 System.out.print((char)data);
                 fos.write(data);
             }
-    //FileReader.read()
-    /* Reads characters into a portion of an array. (2 bytes)
+    /*FileReader.read()
+    * Reads characters into a portion of an array. (2 bytes)
     */
         }catch(FileNotFoundException e1){ //FileReader(String)
             e1.printStackTrace();

@@ -11,8 +11,9 @@ public class Stream2 {
             while((data=fis.read())!= -1){
                 System.out.print((char)data);
             }
-//FileReader.read()
-/* Reads characters into a portion of an array. (2 bytes)
+/*FileReader.read()
+* Reads characters into a portion of an array. 
+* (2 bytes)
 */
         }catch(FileNotFoundException e1){ //FileReader(String)
             e1.printStackTrace();
