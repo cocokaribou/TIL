@@ -1,0 +1,47 @@
+CREATE TABLE HUMAN (
+    SN VARCHAR2(100), 
+    NAME VARCHAR2(100),
+    AGE NUMBER(3)
+);
+
+INSERT INTO HUMAN VALUES ('1111','이영인',34);
+INSERT INTO HUMAN (SN, NAME, AGE) 
+    VALUES ('2222', '이윤형', 32);
+    
+INSERT INTO HUMAN (NAME) VALUES ('김현정');
+COMMIT;
+
+DELETE FROM HUMAN;
+ROLLBACK;
+
+
+--DELETE HUMAN WHERE SN = '2222';
+--TABLE 명 없어도 가능
+
+DELETE FROM HUMAN WHERE NAME = '김현정' AND SN = null; --AND 나 OR로 삭제 조건문 걸어줄 수 있음
+COMMIT;
+
+UPDATE HUMAN SET NAME = '이상성' WHERE SN = '1111';
+COMMIT;
+
+--여러개의 칼럼 값을 동시에 수정
+UPDATE HUMAN 
+    SET NAME = '김현정', AGE = 25 
+    WHERE SN = '1111';
+
+--숫자는 연산도 가능, 조회수 설정할 때 유용
+UPDATE HUMAN
+    SET AGE = AGE+1
+    WHERE SN = '1111';
+
+-- comment, CTRL+/
+/* 
+comment
+block
+*/
+
+COMMIT;
+
+SELECT * FROM HUMAN;
+SELECT AGE FROM HUMAN;
+SELECT * FROM HUMAN WHERE SN != '1111' OR AGE<50;
