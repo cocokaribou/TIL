@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<!-- xml파일과 java파일 연결 -->
+<mapper namespace="dao.PersonMapper">
+
+<!-- id 속성값과 메서드명이 동일해야 -->
+<!-- 칼럼에서 name과 age만 사용자로부터 입력받음 -->
+<!-- 사용자 입력값은 Person 객체에 담겨있음 -->
+<!-- 매개변수(parameterType)로 적어준다 -->
+<!-- 디렉터리까지 까먹지 말것 -->
+	<insert id="insertPerson" parameterType="vo.Person">
+		INSERT INTO
+			person
+		VALUES
+			(
+				<!-- 시퀀스 -->
+				person_seq.nextval,
+				<!-- 매개변수로 받은 Person객체의 필드에 접근 #{필드이름} -->
+				#{name},
+				${age} <!-- 문자열로 안 고쳐줌 -->
+				<!-- Person의 getter 메서드를 호출함 -->
+			)
+		<!-- MyBatis xml 파일에는 ;세미콜론으로 구문을 끝내서는 안된다 -->
+	</insert>
+<!-- insert id 에 메서드명 넣어서 -->
+<!-- 쿼리랑 메서드 연결하기 -->
+<!-- 메서드를 실행하면 위의 쿼리가 실행되도록 -->
+
+
+<!-- 이제 이 구간에 메서드와 연결된 query들이 줄줄이 달림 -->
+
+
+<!-- parameter 값 parameterType -->
+<!-- return 값 resultType -->
+<!-- DB칼럼의 이름, 속성과 vo객체의 인스턴스변수명, 데이터타입 동일 -->
+
+<select id = "selectPerson" resultType = "vo.Person">
+	select * from person order by num
+</select>
+
+
+
+<!-- delete query -->
+	<delete id = "deletePerson" parameterType = "vo.Person">
+		delete from person where num = #{num}
+	</delete>
+
+
+<!-- update query -->
+	<update id="updatePerson" parameterType="vo.Person">
+
+		update Person
+		set 
+			name = #{name},
+			age = #{age}
+
+		where num = #{num}
+		order by num
+
+	</update>
+
+</mapper>
