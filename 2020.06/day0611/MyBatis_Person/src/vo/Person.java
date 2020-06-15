@@ -15,6 +15,10 @@ public class Person {
     //name을 제외한 초기화 생성자
     //name 값은 sequence로 조작해줄 것
 
+    public Person(int num){
+        this. num = num;
+    }
+
     public Person(int num, String name, int age){
         this.num = num;
         this.name = name;

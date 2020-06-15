@@ -45,10 +45,17 @@
 
 
 <!-- delete query -->
+<!-- parameter type object -->
 	<delete id = "deletePerson" parameterType = "vo.Person">
 		delete from person where num = #{num}
 	</delete>
 
+
+<!-- delete query -->
+<!-- parameter type int -->
+	<delete id = "deletePerson2" parameterType = "int">
+		delete from person where num = #{num}
+	</delete>
 
 <!-- update query -->
 	<update id="updatePerson" parameterType="vo.Person">
@@ -59,8 +66,27 @@
 			age = #{age}
 
 		where num = #{num}
-		order by num
 
 	</update>
 
+<!-- search Person by name-->
+<!-- 문자열을 받아와야 함 -->
+	<select id="searchPersonByName" parameterType="string" resultType="vo.Person">
+	select * from person
+	where
+		name = #{name}
+	</select>
+
+   <select id="searchPerson" parameterType="string" resultType="vo.Person">
+      SELECT
+      *
+      FROM 
+         person
+      WHERE
+         UPPER(name) LIKE'%'||UPPER(#{NAME})||'%'
+   </select>
+
+
 </mapper>
+
+

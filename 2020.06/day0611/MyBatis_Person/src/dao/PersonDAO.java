@@ -72,7 +72,6 @@ public class PersonDAO {
         try{
             session = factory.openSession();
             PersonMapper mapper = session.getMapper(PersonMapper.class);
-            mapper.selectPerson();
             //참조변수 안에 생성된 값 대입
             result = mapper.selectPerson();
             
@@ -112,20 +111,72 @@ public class PersonDAO {
     
     }
 
-    public void updatePerson(Person p){
+
+    public int deletePerson2(int num){
         SqlSession session = null;
-        int num = -1;
+        int result = 0;
 
         try{
             session = factory.openSession();
             PersonMapper mapper = session.getMapper(PersonMapper.class);
-            mapper.updatePerson(p);
+            result = mapper.deletePerson2(num);
             session.commit();
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             session.close();
         }
+        return result;
     
+    }
+
+    public int updatePerson(Person p){
+        SqlSession session = null;
+        int result = 0;
+        try{
+            session = factory.openSession();
+            PersonMapper mapper = session.getMapper(PersonMapper.class);
+            result = mapper.updatePerson(p);
+            session.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return result;
+    }
+
+
+    public ArrayList<Person> searchPersonByName (String name){
+        SqlSession session = null;
+        ArrayList<Person> result = null;
+        try{
+            session = factory.openSession();
+            PersonMapper mapper = session.getMapper(PersonMapper.class);
+            result = mapper.searchPersonByName(name);
+            session.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return result;
+    }
+
+
+    public ArrayList<Person> searchPerson (String name){
+        SqlSession session = null;
+        ArrayList<Person> result = null;
+        try{
+            session = factory.openSession();
+            PersonMapper mapper = session.getMapper(PersonMapper.class);
+            result = mapper.searchPerson(name);
+            session.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return result;
     }
 }

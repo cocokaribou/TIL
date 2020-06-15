@@ -24,9 +24,17 @@ public interface PersonMapper {
     //반환값 int
     public int deletePerson(Person p);
 
-    //update 메서드
-    public void updatePerson(Person p);
+    //update 메서드 (반환형 void로도, int로도 가능)
+    public int updatePerson(Person p);
 
 
+    //delete 메서드, 매개변수가 정수
+    public int deletePerson2(int num);
+
+    public ArrayList<Person> searchPersonByName(String name);
+
+
+    //문자가 포함된 이름 검색
+    public ArrayList<Person> searchPerson(String name);
     
 }

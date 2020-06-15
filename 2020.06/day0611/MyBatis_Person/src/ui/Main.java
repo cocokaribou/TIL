@@ -20,7 +20,7 @@ public static void main(String[] args) {
     //SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
     //하지만 기능을 분리한다 -> PersonDAO
 
-    PersonDAO dao = new PersonDAO();
+    // PersonDAO dao = new PersonDAO();
     
     //Person p2 = new Person("YOON", 24);
     //dao.deletePerson(p2);
@@ -28,7 +28,7 @@ public static void main(String[] args) {
 
 
     // 전체 출력
-    ArrayList<Person> result = dao.selectPerson();
+    // ArrayList<Person> result = dao.selectPerson();
     
     //전체 출력 두가지 방법
     //1. 
@@ -50,8 +50,8 @@ public static void main(String[] args) {
     //3.
     //객체를 print매개변수로 전달하면
     //overriden toString 호출됨
-    for(Person temp: result)
-        System.out.println(temp);
+    // for(Person temp: result)
+    //     System.out.println(temp);
 
     // Person p2 = new Person();
     // p2.setNum(2);
@@ -88,14 +88,44 @@ public static void main(String[] args) {
     // dao.insertPerson(p6);
     // dao.insertPerson(p7);
   
- 
+
+    // //일련번호 1번 사람을 지운다
+    // int i = dao.deletePerson2(1);
+    // if (i == 1) System.out.println("삭제성공!");
+    // else System.out.println("삭제실패!");
+    
+    // ArrayList<Person> result = dao.selectPerson();
+    // for(Person temp: result)
+    //     System.out.println(temp);
 
 
+    // Person p = new Person();
+    // //수정하고 싶은 사람의 번호 지정
+    // p.setNum(5);
+
+    // //수정하고 싶은 내용 지정
+    // p.setName("DO");
+    // p.setAge(40);
+
+    // int j = dao.updatePerson(p);
+    // if(j == 1) System.out.println("수정성공!");
+    // else System.out.println("수정실패!");
 
 
-    }
+    // //수정사항 반영된 거 확인
+    // ArrayList<Person> result2 = dao.selectPerson();
+    // for(Person temp: result2)
+    //     System.out.println(temp);
+
+    PersonDAO dao = new PersonDAO();
+    ArrayList<Person> result = dao.searchPerson("d");
+    if(result.size()!= 0){
+        for(int i =0; i<result.size(); i++){
+            System.out.println(result.get(i));
+        }
+    }else System.out.println("검색된 데이터가 없음");
 }
-
+}
 
 
 

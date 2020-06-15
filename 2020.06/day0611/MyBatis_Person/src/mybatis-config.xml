@@ -5,7 +5,7 @@
 	<!-- DB접속정보 값을 가지고 있는 파일 설정 -->
 	<!-- db.properties 이 부분은 타이핑 필요할 수도 있음 -->
 	<!-- 접속하려고 하는 DB의 정보를 담고 있는 파일을 지정 -->
-	<properties resource="db.properties" />
+	<properties resource="db.properties"/>
 	
 	<!-- DB접속 정보 셋팅 -->
 	<environments default="development">
