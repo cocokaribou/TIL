@@ -166,6 +166,22 @@ public class PersonDAO {
     }
 
 
+    public ArrayList<Person> searchPersonByNum (int num){
+        SqlSession session = null;
+        ArrayList<Person> result = null;
+        try{
+            session = factory.openSession();
+            PersonMapper mapper = session.getMapper(PersonMapper.class);
+            result = mapper.searchPersonByNum(num);
+            session.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return result;
+    }
+
     public ArrayList<Person> searchPerson (String name){
         SqlSession session = null;
         ArrayList<Person> result = null;

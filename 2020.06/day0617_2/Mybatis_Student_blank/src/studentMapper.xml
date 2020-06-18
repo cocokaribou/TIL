@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="student.dao.StudentMapper">
+
+<insert id = "insertStudent" parameterType = "student.vo.Student">
+  insert into student values(
+    id_seq.nextval,
+    #{name},
+    #{kor},
+    #{eng},
+    #{mat}
+  )
+</insert>
+
+<select id = "selectStudentAll" resultType = "student.vo.Student">
+  select * from student 
+  order by id
+</select>
+
+<delete id ="deleteStudent" parameterType = "int"> 
+  delete from student where id = #{id}
+</delete>
+
+<update id = "updateStudent" parameterType = "student.vo.Student">
+  update student 
+  set
+    name = #{name},
+    kor = #{kor},
+    eng = #{eng},
+    mat = #{mat}
+
+  where id = #{id}
+</update>
+
+<select id ="searchStudent" parameterType = "string" resultType = "student.vo.Student">
+  select 
+    * 
+  from 
+    student
+  where
+    upper(name) LIKE'%'||upper(#{name})||'%'
+</select>
+
+<select id ="searchStudentByID" parameterType = "int" resultType = "student.vo.Student">
+  select * from student
+  where id = #{id}
+</select>
+
+</mapper>

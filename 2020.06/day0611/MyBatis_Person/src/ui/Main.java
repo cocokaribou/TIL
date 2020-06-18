@@ -20,12 +20,18 @@ public static void main(String[] args) {
     //SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
     //하지만 기능을 분리한다 -> PersonDAO
 
-    // PersonDAO dao = new PersonDAO();
+    PersonDAO dao = new PersonDAO();
     
-    //Person p2 = new Person("YOON", 24);
+    Person p2 = new Person("YOON", 24);
     //dao.deletePerson(p2);
-    //dao.insertPerson(p2);
+    int result = dao.insertPerson(p2);
+    if (result == 1) System.out.println("등록성공!");
+    else System.out.println("등록실패!");
 
+    ArrayList<Person> per = dao.selectPerson();
+    
+    for (Person temp : per)
+        System.out.println(temp);
 
     // 전체 출력
     // ArrayList<Person> result = dao.selectPerson();
@@ -117,13 +123,13 @@ public static void main(String[] args) {
     // for(Person temp: result2)
     //     System.out.println(temp);
 
-    PersonDAO dao = new PersonDAO();
-    ArrayList<Person> result = dao.searchPerson("d");
-    if(result.size()!= 0){
-        for(int i =0; i<result.size(); i++){
-            System.out.println(result.get(i));
-        }
-    }else System.out.println("검색된 데이터가 없음");
+    // PersonDAO dao = new PersonDAO();
+    // ArrayList<Person> result = dao.searchPerson("d");
+    // if(result.size()!= 0){
+    //     for(int i =0; i<result.size(); i++){
+    //         System.out.println(result.get(i));
+    //     }
+    // }else System.out.println("검색된 데이터가 없음");
 }
 }
 

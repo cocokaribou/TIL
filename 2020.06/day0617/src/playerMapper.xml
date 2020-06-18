@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 플레이어 정보 처리 SQL -->
+<mapper namespace="test.dao.Mapper">
+
+<!-- 플레이어 추가 -->
+<insert id = "createPlayer" paramaterType = "player">
+insert into record values(
+	rec_seq.nextval;
+	#{name},
+	0,
+	0
+)
+</insert>
+
+<!-- win_count increment -->
+<update id = "winIncre" parameterType = "player">
+update record set win_count = win_count+1
+</update>
+	
+<!-- lose_count increment -->
+<update id = "loseIncre" parameterType = "player">
+update record set lose_count = lose_count+1
+</update>
+
+<select id = "printName" resultType = "player">
+select name from record
+order by id;
+</select>
+
+<!-- select by name -->
+<select id = "selectByName" parameterType = "string" resultType = "player">
+select * from record where upper(name) = upper(#{name})
+</select>
+
+</mapper>

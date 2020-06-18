@@ -36,5 +36,7 @@ public interface PersonMapper {
 
     //문자가 포함된 이름 검색
     public ArrayList<Person> searchPerson(String name);
+
+    public ArrayList<Person> searchPersonByNum(int num);
     
 }
