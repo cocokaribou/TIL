@@ -9,6 +9,9 @@ import test.dao.PlayerDAO;
 
 
 public class PlayUI {
+    private String[] rcp = {"scissors", "rock", "paper"};
+    private String computer;
+
     Scanner sc = new Scanner(System.in);
     PlayerDAO dao = new PlayerDAO();
 
@@ -20,6 +23,23 @@ public class PlayUI {
 
             switch(select){
                 case 1:
+                    createPlayerMenu();
+                    break;
+                case 2:
+                    rcpMenu();
+                    break;
+                case 3:
+                    ranklist();
+                    break;
+                case 4:
+                    listAll();
+                    break;
+                case 5:
+                    deletMenu();
+                    break;
+                case 0:
+                    System.out.println("exit the program.");
+                    return;
             }
         }
 
@@ -27,89 +47,161 @@ public class PlayUI {
     
     public void printMainMenu(){        
         System.out.println("----------------------");
-        System.out.println("  가위바위보 program");
+        System.out.println(" rcp program");
         System.out.println("----------------------");
-        System.out.println("1. 플레이어 등록");
-        System.out.println("2. 가위바위보");
-        System.out.println("3. 승패 확인");
-        System.out.println("4. 승률 확인");
-        System.out.println("0. 종료");
+        System.out.println("1. create player");
+        System.out.println("2. rcp");
+        System.out.println("3. rank");
+        System.out.println("4. list all player info");
+        System.out.println("5. delete player");
+        System.out.println("0. exit");
         System.out.println("----------------------");
-        System.out.print("입력 : ");
+        System.out.print("select menu : ");
         
     }
 
     public void createPlayerMenu(){
-        System.out.println("플레이어 등록");
+        System.out.println("[create player]");
         System.out.println("----------------------");
-        System.out.print("이름을 입력하세요: ");
+        System.out.print("input player name: ");
         String name = sc.nextLine();
-        sc.nextLine();
-        
-        Player insert = new Player(name);
-        int result = dao.createPlayer(insert);
+
+        Player p = new Player(name);
+        int result = dao.createPlayer(p);
         if(result == 0){
             System.out.println("----------------------");
-            System.out.println("플레이어 등록 실패!\n");
+            System.out.println("failed in creating player!\n");
             return;
-        }else{
-            System.out.println("----------------------");
-            System.out.println("* 등록되었습니다!\n");
         }
+        System.out.println("----------------------");
+        System.out.println("* new player created!\n");
+        
                
     }
+    
+    public Player selectPlayer(){
+        ArrayList<Player> list = dao.printName();
+        for(Player temp : list) System.out.println("---------\n"+temp.getName()+"\n---------");
+        System.out.print("choose your player : ");
+        String name = sc.nextLine();
 
-    public void rcpMenu(String input){
+        Player p1 = dao.selectByName(name);
+        if(p1 != null) {
+            System.err.println("player "+name+", starting the game");
+            return p1;
+        }
+        else {
+            System.out.println("please choose the player among the list.\n");
+            return p1;
+        }
+    }
+
+    public void rcpMenu(){
         while(true){
-            System.out.println("가위바위보");
-            System.out.print("플레이어를 선택하세요: ");
-            
+            System.out.println("[Rock Paper Scissors game]");
+            Player p = selectPlayer();
+            if(p==null) return;
 
             System.out.println("----------------------");
-            System.out.print("\'가위\', \'바위\', \'보\' 중에 하나를 입력하세요: ");
+            System.out.print("\'rock\' \'paper\', \'scissors\' choose one: ");
             String rcp = sc.nextLine();
-            sc.nextLine();
+            if(!rcp.equals("scissors") && !rcp.equals("rock") && !rcp.equals("paper")){
+                System.out.println("please choose among \'rock\' \'paper\' \'scissors\'");
+                continue;
+            }
+            
+            int result = rcpGame(rcp);
+            if(result == -1){
 
-            if(rcpGame(rcp) == -1){
-                
+                System.out.println("you: "+rcp);
+                System.out.println("computer: "+computer);
+
+                System.out.println("you lose!");
+                total_incre(p);
+                lose_incre(p);
+                return;
+            }
+            else if(result == 1){
+                System.out.println("you: "+rcp);
+                System.out.println("computer: "+computer);
+
+                System.out.println("you win!");
+                total_incre(p);
+                win_incre(p);
+                return;
+            }
+            else if (result ==0){
+                System.out.println("you: "+rcp);
+                System.out.println("computer: "+computer);
+
+                System.out.println("draw!");
+                total_incre(p);
+                return;
             }
         }
 
     }
 
-    public Player selectPlayer(String input){
-        ArrayList<Player> list = dao.printName();
-        for(Player temp : list) System.out.println(temp.getName());
-        System.out.println("플레이어 이름을 선택하세요: ");
-        String name = sc.nextLine();
-
-        Player player = new Player(name);
-
-
-
-    }
-
     public int rcpGame(String input){
-        int i = 0;
-        int result = 0;
-
-        if(input.equals("가위")) i = 1;
-        else if(input.equals("바위")) i = 2;
-        else if(input.equals("보")) i = 3;
-        else System.out.println("\'가위\' \'바위\' \'보\' 중에 입력해주세요");
-
+        int player = 0;
+        
+        if(input.equals("scissors")) player = 1;
+        else if(input.equals("rock")) player = 2;
+        else if(input.equals("paper")) player = 3;
+        
         Random rand = new Random();
         int com = rand.nextInt(3)+1;
+
+        computer = rcp[com];
+
+        int result = 0;
         
-        if(i == com) result = 0;//비김
-        else if ((i==1 && com ==2) && (i==2 && com ==3) && (i==3 && com == 1)) result = -1; //짐
-        else result = 1; //이김
+        if(player == com) result = 0;
+        else if ((player==1 && com ==2) && (player==2 && com ==3) && (player==3 && com == 1)) result = -1;
+        else result = 1;
 
         return result;
     }
 
-    public void win_incre(){
-        dao.winIncre();
+    public void win_incre(Player p){
+        dao.winIncre(p);
     }   
+    public void lose_incre(Player p){
+        dao.loseIncre(p);
+    }   
+    public void total_incre(Player p){
+        dao.totalIncre(p);
+    }
+
+
+    public void ranklist(){
+        System.out.println("[rank]");
+        ArrayList<Player> result = dao.ranklist();
+        for(Player player: result) System.out.println(player);
+    }
+
+    public void listAll(){
+        System.out.println("[list all players info]");
+        ArrayList<Player> result = dao.ranklist();
+        for(Player player: result) System.out.println(player);
+    }
+
+    public void deletMenu(){
+        System.out.println("[delete player]");
+        ArrayList<Player> list = dao.ranklist();
+        for(Player player: list) System.out.println(player);
+        System.out.print("input id num you'd like to delete: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        int result = dao.deletePlayer(id);
+        if(result == 0){
+            System.out.println("----------------------");
+            System.out.println("failed in deleting player!\n");
+            return;
+        }
+        System.out.println("----------------------");
+        System.out.println("* existing player deleted!\n");
+    }
 
 }

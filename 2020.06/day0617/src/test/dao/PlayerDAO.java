@@ -10,13 +10,15 @@ import test.vo.Player;
 public class PlayerDAO {
 	private SqlSessionFactory factory = MybatisConfig.getSqlSessionFactory();
 	
+
+	//createPlayer()
 	public int createPlayer(Player p) {
 		SqlSession session = null;
 		int result  = 0;
 
 		try{
 			session = factory.openSession();
-			Mapper mapper = session.getMapper(Mapper.class);
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
 			result = mapper.createPlayer(p);
 			session.commit();
 
@@ -28,12 +30,13 @@ public class PlayerDAO {
 		return result;
 	}
 
+	//winIncre()
 	public void winIncre(Player p) {
 		SqlSession session = null;
 
 		try{
 			session = factory.openSession();
-			Mapper mapper = session.getMapper(Mapper.class);
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
 			mapper.winIncre(p);
 			session.commit();
 
@@ -44,13 +47,31 @@ public class PlayerDAO {
 		}
 	}
 
+	//loseIncre()
 	public void loseIncre(Player p) {
 		SqlSession session = null;
-
+		
 		try{
 			session = factory.openSession();
-			Mapper mapper = session.getMapper(Mapper.class);
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
 			mapper.loseIncre(p);
+			session.commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+	}
+	
+	//totalIncre()
+	public void totalIncre(Player p) {
+		SqlSession session = null;
+		
+		try{
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			mapper.totalIncre(p);
 			session.commit();
 
 		}catch(Exception e){
@@ -60,13 +81,71 @@ public class PlayerDAO {
 		}
 	}
 
-	public ArrayList<Player> selectByName(String name) {
+	//printName()
+	public ArrayList<Player> printName() {
 		SqlSession session = null;
 		ArrayList<Player> result = null;
 
 		try{
 			session = factory.openSession();
-			Mapper mapper = session.getMapper(Mapper.class);
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			result = mapper.printName();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+
+		return result;
+	}
+
+	//ranklist()
+	public ArrayList<Player> ranklist() {
+		SqlSession session = null;
+		ArrayList<Player> result = null;
+
+		try{
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			result = mapper.printName();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+
+		return result;
+	}
+
+	//listAll()
+	public ArrayList<Player> listAll() {
+		SqlSession session = null;
+		ArrayList<Player> result = null;
+
+		try{
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			result = mapper.listAll();
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+
+		return result;
+	}
+
+	
+	public Player selectByName(String name) {
+		SqlSession session = null;
+		Player result = null;
+
+		try{
+			session = factory.openSession();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
 			result = mapper.selectByName(name);
 
 		}catch(Exception e){
@@ -78,21 +157,21 @@ public class PlayerDAO {
 		return result;
 	}
 
-	public ArrayList<Player> printName() {
+	public int deletePlayer(int id){
 		SqlSession session = null;
-		ArrayList<Player> result = null;
+		int result  = 0;
 
 		try{
 			session = factory.openSession();
-			Mapper mapper = session.getMapper(Mapper.class);
-			result = mapper.printName();
+			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
+			result = mapper.deletePlayer(id);
+			session.commit();
 
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
 			session.close();
 		}
-
 		return result;
 	}
 

@@ -4,16 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 플레이어 정보 처리 SQL -->
-<mapper namespace="test.dao.Mapper">
+<mapper namespace="test.dao.PlayerMapper">
 
 <!-- 플레이어 추가 -->
-<insert id = "createPlayer" paramaterType = "player">
-insert into record values(
-	rec_seq.nextval;
-	#{name},
-	0,
-	0
-)
+<insert id = "createPlayer" parameterType = "player">
+insert into record
+values(
+  REC_SEQ.NEXTVAL,
+  #{name},
+  0,
+  0,
+  0)
 </insert>
 
 <!-- win_count increment -->
@@ -26,14 +27,39 @@ update record set win_count = win_count+1
 update record set lose_count = lose_count+1
 </update>
 
+<!-- total count increment -->
+<update id = "totalIncre" parameterType = "player">
+update record set total_count = total_count+1
+</update>
+
+<!-- print Player names -->
 <select id = "printName" resultType = "player">
 select name from record
-order by id;
+order by id
 </select>
+
+<!-- print Player info in order from the highest winning rate   -->
+<select id = "ranklist" resultType = "player">
+select * from record
+order by win_count%total_count desc
+</select>
+
+<!-- print all info -->
+<select id = "listAll" resultType = "player">
+select * from record
+order by id
+</select>
+
 
 <!-- select by name -->
 <select id = "selectByName" parameterType = "string" resultType = "player">
-select * from record where upper(name) = upper(#{name})
+select * from record where name = #{name}
 </select>
+
+<!-- delete player info -->
+<delete id = "deletePlayer" parameterType = "int">
+DELETE FROM record
+WHERE ID = #{id}
+</delete>
 
 </mapper>
