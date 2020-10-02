@@ -1,8 +1,6 @@
 package test.ui;
 
-import java.util.Random;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 
 import test.vo.Player;
 import test.dao.PlayerDAO;
@@ -11,9 +9,10 @@ import test.dao.PlayerDAO;
 public class PlayUI {
     private String[] rcp = {"scissors", "rock", "paper"};
     private String computer;
+        
 
-    Scanner sc = new Scanner(System.in);
-    PlayerDAO dao = new PlayerDAO();
+    private Scanner sc = new Scanner(System.in);
+    private PlayerDAO dao = new PlayerDAO();
 
     public PlayUI(){
         while(true){
@@ -23,10 +22,10 @@ public class PlayUI {
 
             switch(select){
                 case 1:
-                    createPlayerMenu();
+                    createPlayer();
                     break;
                 case 2:
-                    rcpMenu();
+                    selectPlayer();
                     break;
                 case 3:
                     ranklist();
@@ -50,7 +49,7 @@ public class PlayUI {
         System.out.println(" rcp program");
         System.out.println("----------------------");
         System.out.println("1. create player");
-        System.out.println("2. rcp");
+        System.out.println("2. rcp game");
         System.out.println("3. rank");
         System.out.println("4. list all player info");
         System.out.println("5. delete player");
@@ -60,105 +59,113 @@ public class PlayUI {
         
     }
 
-    public void createPlayerMenu(){
+    public void createPlayer(){
         System.out.println("[create player]");
         System.out.println("----------------------");
         System.out.print("input player name: ");
         String name = sc.nextLine();
-
+        
         Player p = new Player(name);
         int result = dao.createPlayer(p);
         if(result == 0){
             System.out.println("----------------------");
-            System.out.println("failed in creating player!\n");
+            System.out.println("\n\t★ failed in creating player!\n");
             return;
         }
         System.out.println("----------------------");
-        System.out.println("* new player created!\n");
+        System.out.println("\n\t★ new player created!\n"); 
+        System.out.print("want to play game right away? (y/n): ");
+        String select = sc.nextLine();
+        if(select.equals("y\n") || select.equals("y") || select.equals("Y\n") || select.equals("Y")){
+            System.err.println("\n\t★ player "+name+", starting the game ★\n");
+            p = dao.selectByName(name);
+            rcpGame(p);
+     }
+    }  
+
+    public void selectPlayer(){
+        System.out.println("[Rock Paper Scissors game]\n");
+        ArrayList<Player> list = dao.listAll();
+        if(list == null){
+            System.out.println("\n\t★ no player has been added!");
+            return;
+        }
+        System.out.println("---player list---");
+        ArrayList<Player> names = dao.printName();
+        System.out.println();
         
-               
-    }
+        Player p1 = null;
+        
+        if(names != null){
+            for(Player temp : names) System.out.print(temp.getName()+"\t");
+            System.out.print("\n\nchoose your player : ");
+            String name = sc.nextLine();
     
-    public Player selectPlayer(){
-        ArrayList<Player> list = dao.printName();
-        for(Player temp : list) System.out.println("---------\n"+temp.getName()+"\n---------");
-        System.out.print("choose your player : ");
-        String name = sc.nextLine();
-
-        Player p1 = dao.selectByName(name);
-        if(p1 != null) {
-            System.err.println("player "+name+", starting the game");
-            return p1;
+            p1 = dao.selectByName(name);
+            if(p1 != null) {
+                System.err.println("\n\t★ player "+name+", starting the game ★\n");
+                rcpGame(p1);
+            }
         }
-        else {
-            System.out.println("please choose the player among the list.\n");
-            return p1;
-        }
+        System.out.println("please choose the player among the list!\n");
+        return;
     }
 
-    public void rcpMenu(){
+    
+    public void rcpGame(Player p){
         while(true){
-            System.out.println("[Rock Paper Scissors game]");
-            Player p = selectPlayer();
-            if(p==null) return;
-
-            System.out.println("----------------------");
-            System.out.print("\'rock\' \'paper\', \'scissors\' choose one: ");
+            System.out.print("type \'rock\'  \'paper\'  \'scissors\': ");
             String rcp = sc.nextLine();
             if(!rcp.equals("scissors") && !rcp.equals("rock") && !rcp.equals("paper")){
-                System.out.println("please choose among \'rock\' \'paper\' \'scissors\'");
+                System.out.println("\n\t★ please choose among \'rock\' \'paper\' \'scissors\'\t");
                 continue;
             }
             
-            int result = rcpGame(rcp);
+            int result = rcpResult(rcp);
+            System.out.println("-----------------------------\n");
+            System.out.println("\t"+rcp+" vs "+computer);
+
             if(result == -1){
-
-                System.out.println("you: "+rcp);
-                System.out.println("computer: "+computer);
-
-                System.out.println("you lose!");
+                System.out.println("\n\t★ you lose!");
                 total_incre(p);
                 lose_incre(p);
-                return;
             }
             else if(result == 1){
-                System.out.println("you: "+rcp);
-                System.out.println("computer: "+computer);
-
-                System.out.println("you win!");
+                System.out.println("\n\t★ you win!");
                 total_incre(p);
                 win_incre(p);
-                return;
             }
             else if (result ==0){
-                System.out.println("you: "+rcp);
-                System.out.println("computer: "+computer);
-
-                System.out.println("draw!");
+                System.out.println("\n\t★ draw!");
                 total_incre(p);
-                return;
             }
-        }
+            System.out.println("\n-----------------------------");
 
+            System.out.print("\ncontinue playing the game? (y/n): ");
+            String select = sc.nextLine();
+            if(select.equals("n\n") || select.equals("n")) break;
+        }
+        System.out.println();
+        return;
     }
 
-    public int rcpGame(String input){
+    public int rcpResult(String input){
         int player = 0;
         
-        if(input.equals("scissors")) player = 1;
-        else if(input.equals("rock")) player = 2;
-        else if(input.equals("paper")) player = 3;
+        if(input.equals("scissors")) player = 0;
+        else if(input.equals("rock")) player = 1;
+        else if(input.equals("paper")) player = 2;
         
         Random rand = new Random();
-        int com = rand.nextInt(3)+1;
+        int com = rand.nextInt(3);
 
         computer = rcp[com];
 
         int result = 0;
         
         if(player == com) result = 0;
-        else if ((player==1 && com ==2) && (player==2 && com ==3) && (player==3 && com == 1)) result = -1;
-        else result = 1;
+        else if ((player==0 && com ==1) || (player==1 && com ==2) || (player==2 && com == 0)) result = -1;
+        else result= 1;
 
         return result;
     }
@@ -174,34 +181,78 @@ public class PlayUI {
     }
 
 
+    //wincount / totalcount = winrate
+    //승률이 높은 순으로 player 이름 출력
+
+    //플레이어(외래키)와 승률을 칼럼으로 갖는 테이블을 만들면 되는데..
+    //테이블 두 개를 연동시키는 방법을 몰라서 일단 java에서 map으로 정렬시켜봄
+    
     public void ranklist(){
         System.out.println("[rank]");
-        ArrayList<Player> result = dao.ranklist();
-        for(Player player: result) System.out.println(player);
+        ArrayList<Player> result = dao.listAll();
+        if (result == null){
+            System.out.println("\n\t★ no player has been added!");
+            return;
+        }
+        
+        int i = 1;
+        for(Player player: result) {
+            double win = player.getWin_count();
+            double total = player.getTotal_count();
+            double winrate = (win/total)*100.0;
+            if(winrate<0) winrate = 0.0;
+
+            //map에 데이터 추가
+            //<플레이어이름, 승률>
+            //TreeMap으로 정렬시키려고 승률을 key로 두려고 하니 key 값은 중복 불가..
+
+            Map<String,Double> map = new HashMap<String, Double>();
+            map.put(player.getName(), winrate);
+            
+            //
+            List<String> keySetList = new ArrayList<>(map.keySet());
+
+            Collections.sort(keySetList, (o1,o2) -> (map.get(o1).compareTo(map.get(o2))));
+            for(String key:keySetList){
+                System.out.printf("\n\t#%d %s\twinning rate: %.2f",i,player.getName(), map.get(key));
+                i++;
+            }
+            System.out.println();
+        }
+        
     }
+
 
     public void listAll(){
         System.out.println("[list all players info]");
-        ArrayList<Player> result = dao.ranklist();
+        ArrayList<Player> result = dao.listAll();
+        if (result == null){
+            System.out.println("\n\t★ no player has been added!");
+            return;
+        }
         for(Player player: result) System.out.println(player);
     }
 
     public void deletMenu(){
         System.out.println("[delete player]");
-        ArrayList<Player> list = dao.ranklist();
-        for(Player player: list) System.out.println(player);
-        System.out.print("input id num you'd like to delete: ");
+        ArrayList<Player> temp = dao.listAll();
+        if (temp == null){
+            System.out.println("\n\t★ no player has been added!");
+            return;
+        }
+        for(Player player: temp) System.out.println(player);
+        System.out.print("\ninput id num you'd like to delete: ");
         int id = sc.nextInt();
         sc.nextLine();
 
         int result = dao.deletePlayer(id);
         if(result == 0){
             System.out.println("----------------------");
-            System.out.println("failed in deleting player!\n");
+            System.out.println("\n\t★ failed in deleting player!\n");
             return;
         }
         System.out.println("----------------------");
-        System.out.println("* existing player deleted!\n");
+        System.out.println("\n\t★ existing player deleted!\n");
     }
 
 }

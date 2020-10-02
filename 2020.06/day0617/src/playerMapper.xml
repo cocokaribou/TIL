@@ -8,52 +8,51 @@
 
 <!-- 플레이어 추가 -->
 <insert id = "createPlayer" parameterType = "player">
-insert into record
+insert into record(ID, NAME)
 values(
-  REC_SEQ.NEXTVAL,
-  #{name},
-  0,
-  0,
-  0)
+  rec_seq.nextval,
+  #{name})
 </insert>
 
 <!-- win_count increment -->
 <update id = "winIncre" parameterType = "player">
-update record set win_count = win_count+1
+update record 
+set WIN_COUNT = WIN_COUNT+1
+where ID = #{id}
 </update>
 	
 <!-- lose_count increment -->
 <update id = "loseIncre" parameterType = "player">
-update record set lose_count = lose_count+1
+update record 
+set LOSE_COUNT = LOSE_COUNT+1
+where ID = #{id}
 </update>
 
 <!-- total count increment -->
 <update id = "totalIncre" parameterType = "player">
-update record set total_count = total_count+1
+update record 
+set TOTAL_COUNT = TOTAL_COUNT+1
+where ID = #{id}
 </update>
 
 <!-- print Player names -->
 <select id = "printName" resultType = "player">
-select name from record
-order by id
+select NAME from record
+order by ID
 </select>
 
-<!-- print Player info in order from the highest winning rate   -->
-<select id = "ranklist" resultType = "player">
-select * from record
-order by win_count%total_count desc
-</select>
+<!-- 테이블 수정해서 win_rate만 출력하게끔 -->
 
 <!-- print all info -->
 <select id = "listAll" resultType = "player">
-select * from record
-order by id
+select ID,NAME,WIN_COUNT,LOSE_COUNT,TOTAL_COUNT from record
 </select>
 
 
 <!-- select by name -->
 <select id = "selectByName" parameterType = "string" resultType = "player">
-select * from record where name = #{name}
+select ID,NAME,WIN_COUNT,LOSE_COUNT,TOTAL_COUNT from record 
+where NAME = #{name}
 </select>
 
 <!-- delete player info -->

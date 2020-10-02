@@ -100,25 +100,6 @@ public class PlayerDAO {
 		return result;
 	}
 
-	//ranklist()
-	public ArrayList<Player> ranklist() {
-		SqlSession session = null;
-		ArrayList<Player> result = null;
-
-		try{
-			session = factory.openSession();
-			PlayerMapper mapper = session.getMapper(PlayerMapper.class);
-			result = mapper.printName();
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			session.close();
-		}
-
-		return result;
-	}
-
 	//listAll()
 	public ArrayList<Player> listAll() {
 		SqlSession session = null;

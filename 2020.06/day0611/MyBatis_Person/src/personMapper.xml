@@ -11,7 +11,7 @@
 <!-- 칼럼에서 name과 age만 사용자로부터 입력받음 -->
 <!-- 사용자 입력값은 Person 객체에 담겨있음 -->
 <!-- 매개변수(parameterType)로 적어준다 -->
-<!-- 디렉터리까지 까먹지 말것 -->
+<!-- 디렉터리까지 까먹지 말것 -->	
 	<insert id="insertPerson" parameterType="vo.Person">
 		INSERT INTO
 			person

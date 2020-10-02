@@ -1,6 +1,5 @@
 package day0519.HW;
 
-
 public class SchoolManager {
     private Human[] arr = new Human[100];
     private int count = 0;
@@ -8,7 +7,7 @@ public class SchoolManager {
     public boolean insertHuman(Human h){
         if(count==0 && arr[count] == null){
             arr[count++] = h;
-            return true;
+            return true; //스위치가 on으로 올라감, 뭐에 대한 on이냐? 저장이 잘 됐다는 표식.
         }
         for(int i =0; i<count; i++){
             Human temp = arr[i];
@@ -17,7 +16,8 @@ public class SchoolManager {
                 Student s1 = (Student)h;
                 Student s2 = (Student)temp;
     
-                if(s1.getSn().equals(s2.getSn())) return false;
+                if(s1.getSn().equals(s2.getSn())) 
+                return false;
             }
             else{
                 String input = h.getSn(); //입력받은 객체의 주민번호
@@ -52,7 +52,7 @@ public class SchoolManager {
                 return human;
             }
         }
-        return null;
+        return null; //
     }
 
     //Human 객체를 전달받아 field의 Human 배열에서 일치하는 객체를 삭제하는 method

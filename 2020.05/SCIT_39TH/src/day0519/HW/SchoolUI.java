@@ -172,7 +172,7 @@ public class SchoolUI {
                     insertHuman();
                     break;
                 case 2:
-                    h = findHuman();
+                    h = findHuman(); //return temp;
                     if(h != null) h.print();
                     else System.out.println("일치하는 정보 없음");
                     break;
