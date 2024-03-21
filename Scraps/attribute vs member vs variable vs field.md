@@ -1,7 +1,4 @@
-https://stackoverflow.com/questions/11350423/terminology-of-class-attribute-vs-member-vs-variable-vs-field
-
-## terminology of Class "attribute" vs "member" vs "variable" vs "field"
-
+##"attribute" vs "member" vs "variable" vs "field"
 
 <b>Attribute</b> : Attributes are the instance variables of an Object. Abstract notion of a property within a class. For example, a Person class might have a lastName attribute.
 
