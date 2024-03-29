@@ -1,10 +1,3 @@
 # TIL  
   
-As a novice programmer, Today I Learned...  
-  
-* C
-* C++
-* Java
-* SQL
-* ..and some other stuffs I've been studying
-
+This repository is dedicated to collecting class materials for learning basic Java Web programming and SQL scripting.
